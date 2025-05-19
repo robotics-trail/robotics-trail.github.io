@@ -1,8 +1,10 @@
 main:
    - title: "Home"
      url: /
-  # - title: "Posts"
-  #   url: /posts/
+  #  - title: "Education"
+  #    url: /education/
+   - title: "People"
+     url: /people/
   # - title: "Categories"
   #   url: /categories/
   # - title: "Tags"
