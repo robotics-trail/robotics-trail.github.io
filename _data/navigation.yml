@@ -3,6 +3,8 @@ main:
      url: /
   #  - title: "Education"
   #    url: /education/
+   - title: "Professor"
+     url: /jtorde/
    - title: "People"
      url: /people/
   # - title: "Categories"
