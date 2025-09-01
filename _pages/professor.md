@@ -3,7 +3,7 @@ author_profile: true
 title: "![](/assets/images/foto_mia2.svg)" #  Jesus Tordesillas Torres
 layout: splash
 
-permalink: /jtorde
+permalink: /jtorde/
 date: 2016-03-23T11:48:41-04:00
 header:
   overlay_color: "#000"
