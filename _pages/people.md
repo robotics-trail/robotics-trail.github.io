@@ -4,7 +4,7 @@ title: "People"
 ---
 
 **Faculty**      
-  * [Prof. Jesus Tordesillas Torres](){: .btn .btn--success}
+  * [Prof. Jesus Tordesillas Torres](/jtorde/){: .btn .btn--success}
 
 **PhD Students**  
   * To be added soon
