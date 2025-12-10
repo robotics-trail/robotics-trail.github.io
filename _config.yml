@@ -62,7 +62,7 @@ plugins:
 
 author:
   name   : "PI: Jesus Tordesillas Torres"
-  avatar : "/assets/images/bio-photo.jpg"
+  avatar : "/assets/images/bio-photo.png"
   bio    : "Postdoctoral Associate at the Aerospace Controls Lab at MIT"
   links:
     - label: "GitHub"
