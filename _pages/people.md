@@ -6,6 +6,9 @@ title: "People"
 **Faculty**      
   * [Prof. Jesus Tordesillas Torres](/jtorde/){: .btn .btn--success}
 
+**Postdocs**  
+  * [Daniel Fuertes](https://www.linkedin.com/in/daniel-fuertes-coiras/){: .btn .btn--success} <span style="color:blue">Learning vision-based trajectory planning.</span> Visiting student from UPM. 
+
 **PhD Students**  
   * To be added soon
 
