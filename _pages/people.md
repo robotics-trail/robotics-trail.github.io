@@ -16,19 +16,19 @@ title: "People"
 
  * [Mario Gomez Andreu](https://www.linkedin.com/in/mario-gomez-andreu-b12651202/){: .btn .btn--success} <span style="color:blue">Learning-based trajectory planning.</span> Visiting student from ETH. 
  * [Ernesto Pandelet Durán](https://www.linkedin.com/in/ernestopd/){: .btn .btn--success} <span style="color:blue">Visual odometry and depth estimation.</span> Master thesis, co-supervised with Prof. Jaime Boal.
- * [Miguel Álvarez Domínguez](https://www.linkedin.com/in/miguel-alvarez-dominguez/){: .btn .btn--success} <span style="color:blue">Reinforcement Learning for Trajectory Planning.
+ * [Miguel Álvarez Domínguez](https://www.linkedin.com/in/miguel-alvarez-dominguez/){: .btn .btn--success} <span style="color:blue">Reinforcement Learning for Trajectory Planning. Master thesis
 
 **Undergraduate Students**
 
-  * [Carlos Martínez Cuenca](https://www.linkedin.com/in/pabloparamio/){: .btn .btn--success} <span style="color:blue">Trajectory Optimization in Gaussian Splats.
-  * [Sergio Jiménez Romero](https://www.linkedin.com/in/sergio-jiménez-romero/){: .btn .btn--success} <span style="color:blue">Reinforcement Learning to improve mathematical algorithms. Co-supervised with Prof. Frederike Dümbgen (CMU).
-  * [Pablo Paramio Valdés](https://www.linkedin.com/in/pabloparamio/){: .btn .btn--success} <span style="color:blue">Reinforcement Learning for drones.</span>
- Undergraduate Thesis.
-  * [Tomás Cannistra Rovati](https://www.linkedin.com/in/tomas-cannistra-rovati-28a96a2a5/){: .btn .btn--success} <span style="color:blue">Hardware setup for FPV with computer in the loop. 
+  * [Carlos Martínez Cuenca](https://www.linkedin.com/in/pabloparamio/){: .btn .btn--success} <span style="color:blue">Trajectory Optimization in Gaussian Splats. Undergraduate thesis.
+  * [Sergio Jiménez Romero](https://www.linkedin.com/in/sergio-jiménez-romero/){: .btn .btn--success} <span style="color:blue">Reinforcement Learning to improve mathematical algorithms. Undergraduate thesis, co-supervised with Prof. Frederike Dümbgen (CMU).
+  * [Tomás Cannistra Rovati](https://www.linkedin.com/in/tomas-cannistra-rovati-28a96a2a5/){: .btn .btn--success} <span style="color:blue">Hardware setup for FPV with computer in the loop. Research project.
+  * [Manuel Rodríguez Villegas](https://www.linkedin.com/in/mrodriguezvillegas/){: .btn .btn--success} <span style="color:blue">Visual topological SLAM with deep learning</span>. Undergraduate Thesis, co-supervised with Prof. Jaime Boal. 
 
 **Alumni**    
 
-   * [Manuel Rodríguez Villegas](https://www.linkedin.com/in/mrodriguezvillegas/){: .btn .btn--success} <span style="color:blue">Visual topological SLAM with deep learning</span>. Undergraduate Thesis, co-supervised with Prof. Jaime Boal. 
+  * [Pablo Paramio Valdés](https://www.linkedin.com/in/pabloparamio/){: .btn .btn--success} <span style="color:blue">Reinforcement Learning for drones.</span>
+ Undergraduate Thesis.
    * [FU Zhengyu](https://fu-zhengyu.xyz){: .btn .btn--success} <span style="color:blue">Learning to play basketball with a transformer robot</span>. Semester project, remotely co-supervised with ETH
    * [Jonatan Flink Ornung](){: .btn .btn--success} <span style="color:blue">Model-based control for drones using gym-pybullet-drones.</span> Semester project
    * [Emilio Palma](https://www.linkedin.com/in/emilio-palma-2000/){: .btn .btn--success} <span style="color:blue">Imposition of constraints on Neural Networks</span>. Master thesis, remotely co-supervised with ETH.  
