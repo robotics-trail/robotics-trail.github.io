@@ -10,7 +10,7 @@ title: "People"
   * [Daniel Fuertes](https://www.linkedin.com/in/daniel-fuertes-coiras/){: .btn .btn--success} <span style="color:blue">Learning vision-based trajectory planning.</span> Visiting student from UPM. 
 
 **PhD Students**  
-  * [Robinroy Peter](https://www.linkedin.com/in/robinroy-peter/){: .btn .btn--success} <span style="color:blue">Vision-based multiagent trajectory planning.</span> 
+  * [Robinroy Peter](https://www.linkedin.com/in/robinroy-peter/){: .btn .btn--success} <span style="color:blue">Vision-based multiagent trajectory planning.</span> Co-supervised with Prof. Jaime Boal.
 
 **Master Students**  
 
