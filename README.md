@@ -30,7 +30,7 @@ bundle exec jekyll serve --watch #(this will run the webpage locally, it takes ~
 ```
 Go to http://localhost:4000/~jtorde/ , if you have baseurl=/~jtorde  or Go to http://localhost:4000/ (if you don't have a baseurl)  (see https://docs.github.com/en/github/working-with-github-pages/testing-your-github-pages-site-locally-with-jekyll)
 
------------------------
+----------------------
 
 ## Prepare everything in Athena (only needed the first time you do it)
 
