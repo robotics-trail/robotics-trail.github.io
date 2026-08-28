@@ -1,8 +1,6 @@
 main:
    - title: "Home"
      url: /
-  #  - title: "Education"
-  #    url: /education/
    - title: "Professor"
      url: /jtorde/
    - title: "People"
@@ -11,5 +9,3 @@ main:
   #   url: /categories/
   # - title: "Tags"
   #   url: /tags/
-  # - title: "Education"
-  #   url: /education/

@@ -294,10 +294,6 @@ _pages/                        one file per page
 
 Real problems on the site that this branch deliberately does not touch:
 
-- **`/education/` is still not in the navigation**, so it is reachable only
-  from the sitemap. Its content is now correct and matches `/jtorde/`, with one
-  exception flagged in a comment at the top of the file: the two pages disagree
-  about the dates of the UPM master's (2016–2017 here, 2016–2018 there).
 - **The two hero backgrounds are still the heaviest single downloads**
   (`mine1_compressed.webp` at 399 KB, `mader_header_white.webp` at 52 KB). The
   first is a noisy photograph that does not compress well; a tighter crop would
