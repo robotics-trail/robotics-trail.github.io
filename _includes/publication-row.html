@@ -1,0 +1,162 @@
+{%- comment -%}
+  Renders the publication list from _data/publications.yml.
+
+  This is a drop-in replacement for Minimal Mistakes' `feature_row` include:
+  it emits exactly the same wrapper / item / archive__item markup, so the
+  theme's own CSS styles it identically and the page looks unchanged. The
+  differences are all additive:
+
+    * data-topics="..."  on each item, so the filter buttons can show/hide it
+    * loading="lazy" + decoding="async" on the figure
+    * a real alt attribute instead of "placeholder image 1"
+
+  The card body is `excerpt`, exactly as it has always been. No bibliographic
+  data is rendered here at build time -- it all lives in bibliography.bib,
+  which the browser fetches directly for the "Bib" buttons.
+
+  Usage:
+    {% include publication-row.html %}                 all, no filter UI
+    {% include publication-row.html filters=true %}    with the filter buttons
+    {% include publication-row.html type="justified" %}  same as feature_row's type=
+{%- endcomment -%}
+
+{%- assign locale = include.locale | default: site.locale -%}
+{%- assign pubs = site.data.publications -%}
+
+{%- if include.filters -%}
+{%- comment -%}
+  `hidden` until the filter script runs. The buttons do nothing without it,
+  and every card stays visible either way, so a reader (or a crawler) with no
+  JavaScript sees the full list and no dead controls.
+{%- endcomment -%}
+<div class="pub-filter-bar" role="group" aria-label="Filter publications by research topic" hidden>
+  <span class="pub-filter-bar__label">Filter:</span>
+  <button type="button" class="pub-filter is-active" data-filter="all">All</button>
+  {%- for t in site.data.topics -%}
+  <button type="button" class="pub-filter" data-filter="{{ t.id }}">{{ t.short }}</button>
+  {%- endfor -%}
+</div>
+<p class="pub-filter-count" role="status" aria-live="polite"></p>
+{%- endif -%}
+
+<div class="feature__wrapper">
+
+  {% for f in pubs %}
+    <div class="feature__item{% if include.type %}--{{ include.type }}{% endif %}" data-topics="{{ f.topics | join: ' ' }}">
+      <div class="archive__item">
+        {% if f.image_path %}
+          <div class="archive__item-teaser">
+            {%- comment -%}
+              An entry with `video:` was an animated GIF. The GIFs ran to 19 MB
+              between them; the same clips as VP9/WebM are 2.8 MB, so they are
+              now <video> with the first frame as the poster.
+
+              Nothing is fetched on page load: there are no <source> children
+              until assets/js/pub-video.js adds them as the card nears the
+              viewport, and `preload="none"` keeps the browser from guessing
+              otherwise. Until then the poster is all that has been downloaded.
+              With JavaScript off the poster simply stays -- a still frame
+              rather than a broken box.
+
+              width/height are the poster's real pixel size, which lets the
+              browser reserve the right space before anything arrives.
+            {%- endcomment -%}
+            {%- if f.video -%}
+            <video class="pub-video"
+                   poster="{{ f.image_path | relative_url }}"
+                   {% if f.image_width %}width="{{ f.image_width }}" height="{{ f.image_height }}"{% endif %}
+                   data-webm="{{ f.video | append: '.webm' | relative_url }}"
+                   data-mp4="{{ f.video | append: '.mp4' | relative_url }}"
+                   preload="none" muted loop playsinline disablepictureinpicture
+                   aria-label="{% if f.alt %}{{ f.alt | escape }}{% endif %}"></video>
+            {%- else -%}
+            <img src="{{ f.image_path | relative_url }}"
+                 alt="{% if f.alt %}{{ f.alt }}{% endif %}"
+                 {% if f.image_width %}width="{{ f.image_width }}" height="{{ f.image_height }}"{% endif %}
+                 loading="lazy" decoding="async">
+            {%- endif -%}
+            {% if f.image_caption %}
+              <span class="archive__item-caption">{{ f.image_caption | markdownify | remove: "<p>" | remove: "</p>" }}</span>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        <div class="archive__item-body">
+          {% if f.title %}
+            <h2 class="archive__item-title">{{ f.title }}</h2>
+          {% endif %}
+
+          {%- comment -%}
+            Author lists and venues are already in _data/publications.yml,
+            verified against arXiv and Crossref. They are not shown yet so that
+            this change is purely structural. To display them, delete this
+            comment wrapper:
+
+          {% if f.authors %}
+            <p class="archive__item-authors">{{ f.authors }}</p>
+          {% endif %}
+          {% if f.venue %}
+            <p class="archive__item-venue">{{ f.venue }}{% if f.year %} &middot; {{ f.year }}{% endif %}</p>
+          {% endif %}
+
+          {%- endcomment -%}
+
+          {%- comment -%}
+            "Bib" copies this paper's BibTeX. The button carries only the
+            key(s) -- the entry itself is pulled out of /bibliography.bib at
+            click time by assets/js/bibtex.js, so it can never be a stale copy
+            of the file. It is `hidden` until that script runs, so nobody
+            without JavaScript is shown a control that cannot work.
+
+            It is appended to the excerpt *before* markdownify, on the same
+            line, so kramdown puts it inside the same <p> as the paper's own
+            Paper/Video/Code buttons instead of starting a new block.
+          {%- endcomment -%}
+          {%- assign body = f.excerpt -%}
+          {%- if f.bibkey -%}
+            {%- assign bibkeys = f.bibkey -%}
+            {%- if f.also -%}
+              {%- assign extra = f.also | join: ' ' -%}
+              {%- assign bibkeys = bibkeys | append: ' ' | append: extra -%}
+            {%- endif -%}
+            {%- capture bibbtn -%}<button type="button" class="btn btn--small bibtex-copy" data-bibkey="{{ bibkeys }}" hidden>Bib</button>{%- endcapture -%}
+            {%- assign body = body | append: ' ' | append: bibbtn -%}
+
+            {%- comment -%}
+              "Abstract" opens the panel below. Like the Bib button it carries only
+              the key: assets/js/bibtex.js reads the authors and the abstract out of
+              /bibliography.bib at click time, so this template renders neither and
+              there is no second copy to drift. The panel is empty markup until it
+              is first opened.
+
+              Only the FIRST key is used. Where a card maps to two entries (a
+              conference paper and its journal version) they share an abstract; the
+              Bib button still copies both.
+
+              `hidden` until the script runs -- nobody is shown a control that
+              cannot work, and it stays out of the tab order for keyboard users.
+            {%- endcomment -%}
+            {%- capture detailsbtn -%}<button type="button" class="btn btn--small pub-details-btn" data-bibkey="{{ f.bibkey }}" aria-expanded="false" aria-controls="pub-details-{{ forloop.index }}" hidden>Abstract</button>{%- endcapture -%}
+            {%- assign body = body | append: ' ' | append: detailsbtn -%}
+          {%- endif -%}
+
+          {% if body %}
+            <div class="archive__item-excerpt">
+              {{ body | markdownify }}
+            </div>
+          {% endif %}
+
+          {% if f.bibkey %}
+            <div class="pub-details" id="pub-details-{{ forloop.index }}" role="region"
+                 aria-label="Authors and abstract for {{ f.title | escape }}" hidden></div>
+          {% endif %}
+
+          {% if f.url %}
+            <p><a href="{{ f.url | relative_url }}" class="btn {{ f.btn_class }}">{{ f.btn_label | default: site.data.ui-text[locale].more_label | default: "Learn More" }}</a></p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+
+</div>

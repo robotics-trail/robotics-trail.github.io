@@ -1,0 +1,63 @@
+{%- comment -%}
+  TRAIL: replaces Minimal Mistakes' _includes/schema.html.
+
+  Upstream emitted, on the homepage only:
+
+      { "@context": "https://schema.org",
+        "@type": "Person",
+        "name": null,
+        "url": "https://robotics-trail.github.io/" }
+
+  -- because it reads site.social.name, which was never set. Structured data
+  with a null required property is discarded outright, so the site's only
+  machine-readable statement about itself said nothing.
+
+  This describes the lab rather than the person, which is what the homepage is
+  actually about. The person gets their own Person block on /jtorde/ (see
+  _includes/head/custom.html). Identity links live in `social.links` in
+  _config.yml so both blocks read the same list.
+
+  Validate any change with https://validator.schema.org before pushing.
+{%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ResearchOrganization",
+  "name": {{ site.title | jsonify }},
+  "alternateName": "Trustworthy Robotics and AI Lab",
+  "url": {{ '/' | absolute_url | jsonify }},
+  "description": {{ site.description | strip_newlines | strip | jsonify }},
+  {%- if site.og_image %}
+  "image": {{ site.og_image | absolute_url | jsonify }},
+  {%- endif %}
+  "parentOrganization": {
+    "@type": "CollegeOrUniversity",
+    "name": "Universidad Pontificia Comillas",
+    "alternateName": "Comillas-ICAI",
+    "url": "https://www.comillas.edu/en/icai/"
+  },
+  "location": {
+    "@type": "Place",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Madrid",
+      "addressCountry": "ES"
+    }
+  },
+  "founder": {
+    "@type": "Person",
+    "name": "Jesus Tordesillas Torres",
+    "url": {{ '/jtorde/' | absolute_url | jsonify }}
+  },
+  "knowsAbout": [
+    "Trajectory planning",
+    "Trajectory optimization",
+    "Learning-based motion planning",
+    "Imposition of hard constraints on neural networks",
+    "Aerial robotics",
+    "Legged robotics",
+    "Robot state estimation"
+  ]{% if site.org_sameas %},
+  "sameAs": {{ site.org_sameas | jsonify }}{% endif %}
+}
+</script>

@@ -1,0 +1,29 @@
+# Institution logos shown on /jtorde/, rendered by _includes/logo-strip.html.
+#
+# These used to be five markdown images with {: .align-left} in the page's front
+# matter. That class floats the image on desktop, but below 600px Minimal
+# Mistakes turns it into `display: block; margin-inline: auto`, so on a phone
+# each logo became a full-width centred block and the five of them ran to about
+# 430px of vertical space.
+#
+#   name   used as the alt text -- these are meaningful images, not decoration,
+#          so they need one. All five previously had an empty alt.
+#   image  path under /assets/images/
+#
+# Order here is display order. The strip normalises them to a common height, so
+# the source files can be any size.
+
+- name: "Universidad Pontificia Comillas — ICAI"
+  image: /assets/images/comillas.webp
+
+- name: "ETH Zurich"
+  image: /assets/images/eth.svg
+
+- name: "Massachusetts Institute of Technology"
+  image: /assets/images/mit.svg
+
+- name: "NASA Jet Propulsion Laboratory"
+  image: /assets/images/nasa.svg
+
+- name: "ETSII — Universidad Politécnica de Madrid"
+  image: /assets/images/etsii.svg

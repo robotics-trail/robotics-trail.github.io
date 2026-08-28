@@ -1,0 +1,12 @@
+{%- comment -%}
+  The research summary above the publication list on the homepage.
+
+  The text is one paragraph in _data/research.yml. The heading deliberately
+  reuses the same `notice--success` treatment as the PUBLICATIONS heading below
+  it, so the two sections read as a pair.
+{%- endcomment -%}
+<div class="notice--success research-heading">RESEARCH</div>
+
+<div class="research-summary">
+  {{ site.data.research.body | markdownify }}
+</div>

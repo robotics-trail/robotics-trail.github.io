@@ -1,0 +1,36 @@
+# The contact / profile links shown under the page header on the homepage and
+# on /jtorde/, rendered by _includes/links-row.html.
+#
+# This used to be a block of HTML inside _config.yml, spaced out with runs of
+# non-breaking spaces (12 after the email, then 7, then 13...), which is why
+# the gaps between the links were uneven. Spacing is CSS now; this file only
+# says what the links are.
+#
+#   label  the visible text
+#   url    where it goes
+#   icon   a Font Awesome class. `fa-fw` on all of them keeps the icons the
+#          same width so the labels line up when the row wraps.
+#
+# Order here is display order. Note _config.yml still carries its own copies of
+# some of these under `author.links` and `footer.links`, which the theme reads
+# for the sidebar and the footer and which cannot be driven from _data/.
+
+- label: "jtordesillas@comillas.edu"
+  url: "mailto:jtordesillas@comillas.edu"
+  icon: "fas fa-fw fa-envelope"
+
+- label: "GitHub jtorde"
+  url: "https://github.com/jtorde"
+  icon: "fab fa-fw fa-github"
+
+- label: "GitHub TRAIL"
+  url: "https://github.com/robotics-trail"
+  icon: "fab fa-fw fa-github"
+
+- label: "Google Scholar"
+  url: "https://scholar.google.com/citations?user=QKcwqsQAAAAJ&hl=en&oi=sra"
+  icon: "fas fa-fw fa-graduation-cap"
+
+- label: "LinkedIn"
+  url: "https://www.linkedin.com/in/jesus-tordesillas-torres/"
+  icon: "fab fa-fw fa-linkedin"

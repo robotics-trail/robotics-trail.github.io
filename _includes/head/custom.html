@@ -1,0 +1,694 @@
+{%- comment -%}
+  TRAIL: schema.org Person for the PI, emitted on /jtorde/ only.
+
+  The theme only ever emits structured data on the homepage (see
+  _includes/schema.html), so this page -- the one that should own the query
+  "Jesus Tordesillas" -- previously carried none at all.
+
+  `sameAs` is the important field: it is the explicit statement that these
+  profiles are one entity. The list lives in _config.yml as `person_sameas`.
+  Add an ORCID and a claimed Semantic Scholar / OpenAlex page there when they
+  exist, and make sure each of those profiles links back here -- the signal is
+  much weaker when it only points one way.
+
+  Validate any change with https://validator.schema.org before pushing.
+{%- endcomment -%}
+{%- if page.url == '/jtorde/' -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Jesus Tordesillas Torres",
+  "alternateName": ["Jes\u00fas Tordesillas Torres", "Jesus Tordesillas"],
+  "url": {{ page.url | absolute_url | jsonify }},
+  "jobTitle": "Assistant Professor",
+  "email": "mailto:{{ site.email }}",
+  "affiliation": {
+    "@type": "CollegeOrUniversity",
+    "name": "Universidad Pontificia Comillas",
+    "alternateName": "Comillas-ICAI",
+    "url": "https://www.comillas.edu/en/icai/"
+  },
+  "worksFor": {
+    "@type": "ResearchOrganization",
+    "name": {{ site.title | jsonify }},
+    "url": {{ '/' | absolute_url | jsonify }}
+  },
+  "alumniOf": [
+    {
+      "@type": "CollegeOrUniversity",
+      "name": "Massachusetts Institute of Technology",
+      "url": "https://www.mit.edu/"
+    },
+    {
+      "@type": "CollegeOrUniversity",
+      "name": "Universidad Polit\u00e9cnica de Madrid",
+      "url": "https://www.etsii.upm.es/"
+    }
+  ],
+  "knowsAbout": [
+    "Trajectory planning",
+    "Trajectory optimization",
+    "Learning-based motion planning",
+    "Imposition of hard constraints on neural networks",
+    "Aerial robotics",
+    "Legged robotics",
+    "Robot state estimation"
+  ]{% if site.person_sameas %},
+  "sameAs": {{ site.person_sameas | jsonify }}{% endif %}
+}
+</script>
+{%- endif -%}
+
+<!-- TRAIL: publication topic filter (see assets/js/publication-filter.js). -->
+<script defer src="{{ '/assets/js/publication-filter.js' | relative_url }}"></script>
+
+{%- comment -%}
+  TRAIL: breadcrumbs on every page except the homepage.
+
+  The name falls back through seo_title because /jtorde/'s own title is a
+  portrait image -- markdownify|strip_html on it yields an empty string, which
+  would put a nameless crumb in the trail.
+{%- endcomment -%}
+{%- unless page.url == '/' -%}
+{%- assign crumb = page.title | markdownify | strip_html | strip -%}
+{%- if crumb == '' -%}{%- assign crumb = page.seo_title | default: page.url -%}{%- endif -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": {{ site.title | jsonify }},
+      "item": {{ '/' | absolute_url | jsonify }}
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": {{ crumb | jsonify }},
+      "item": {{ page.url | absolute_url | jsonify }}
+    }
+  ]
+}
+</script>
+{%- endunless -%}
+
+<!-- TRAIL: lazy playback for the publication clips (former GIFs). -->
+<script defer src="{{ '/assets/js/pub-video.js' | relative_url }}"></script>
+
+<!-- TRAIL: BibTeX copy buttons + the /bibliography/ viewer. Both fetch the real
+     .bib at runtime, so nothing here is a transcription of it. -->
+<script>document.documentElement.setAttribute('data-bib-url', '{{ "/bibliography.bib" | relative_url }}');</script>
+<script defer src="{{ '/assets/js/bibtex.js' | relative_url }}"></script>
+<style>
+  /* Filter buttons above the publication list. Everything here is scoped to
+     .pub-filter* (plus the hidden rule for filtered-out cards), so no existing
+     element on the page changes. */
+  .pub-filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .4rem;
+    margin: 0 0 1em;
+  }
+  .pub-filter-bar__label {
+    font-size: .8em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: #6f6f6f;
+    margin-right: .3rem;
+  }
+  .pub-filter {
+    border: 1px solid #d8d8d8;
+    background: #fff;
+    border-radius: 999px;
+    padding: .3em .9em;
+    font-size: .78em;
+    line-height: 1.4;
+    cursor: pointer;
+    color: #4f4f4f;
+    transition: background .15s, color .15s, border-color .15s;
+  }
+  .pub-filter:hover { border-color: #00553f; color: #00553f; }
+  .pub-filter.is-active { background: #00553f; border-color: #00553f; color: #fff; }
+  .pub-filter:focus-visible { outline: 3px solid #00553f; outline-offset: 2px; }
+  .pub-filter-count {
+    font-size: .8em;
+    color: #6f6f6f;
+    margin: -.5em 0 1em;
+    min-height: 1.2em;
+  }
+  .feature__wrapper [data-topics][hidden] { display: none; }
+
+  /* ---- embedded form (/tutorias/) -------------------------------------- */
+
+  /* Microsoft's snippet hands you width="640px" height="480px". Fixed pixels
+     overflow a phone screen, so the size is set here instead: full width of
+     the column, and a height driven by the viewport so the form gets as much
+     room as the screen has. The iframe scrolls internally -- Microsoft Forms
+     cannot report its own height to the page, so it cannot auto-fit. */
+  .form-embed {
+    display: block;
+    width: 100%;
+    border: 0;
+    height: 78vh;
+    height: 78dvh;      /* dvh excludes the mobile address bar; vh above is
+                           the fallback for browsers that lack it */
+    min-height: 560px;
+  }
+  .form-intro { font-size: .92em; color: #5a5a5a; }
+
+  @media (max-width: 37.5em) {
+    /* Nearly the whole screen: the page has nothing else on it, so this beats
+       scrolling a short window inside a scrolling page. */
+    .form-embed { height: 86dvh; min-height: 480px; }
+  }
+
+  /* ---- institution logo strip ----------------------------------------- */
+
+  /* Scoped under .page__content to outrank the theme's list styling. */
+  .page__content .logo-strip {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    /* px, not rem: the theme scales the root font-size up at wider
+       breakpoints, which would have made these logos grow to ~94px there. */
+    gap: 16px 36px;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.75em;
+  }
+  .page__content .logo-strip > li { margin: 0; display: flex; }
+
+  /* The source logos range from 121x101 to 278x74. Fixing the height and
+     letting the width follow puts them on a common optical line and stops the
+     widest one dominating. */
+  .logo-strip img {
+    height: 64px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  @media (max-width: 37.5em) {
+    /* Two tidy rows instead of five full-width blocks. */
+    .page__content .logo-strip { gap: 18px 26px; justify-content: center; }
+    .logo-strip img { height: 40px; }
+  }
+
+  /* ---- contact / profile link row ------------------------------------- */
+
+  /* Scoped under .page__content to outrank the theme's list styling. */
+  .page__content .link-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .45rem 1.75rem;      /* even spacing, instead of runs of &nbsp; */
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.75em;
+    font-size: .95em;
+  }
+  .page__content .link-row > li { margin: 0; }
+
+  .link-row a {
+    display: inline-flex;
+    align-items: center;
+    gap: .5em;
+    white-space: nowrap;      /* an icon never wraps away from its label */
+    color: #3f3f3f;
+    text-decoration: none;
+    /* A faint rule keeps them reading as links without the heavy default
+       underline; it picks up the accent colour on hover. */
+    border-bottom: 1px solid #dcdcdc;
+    transition: color .15s, border-color .15s;
+  }
+  .link-row a:hover { color: #00553f; border-bottom-color: #00553f; }
+  .link-row a:focus-visible {
+    outline: 3px solid #00553f;
+    outline-offset: 3px;
+    color: #00553f;
+  }
+  .link-row i { color: #7d7d7d; transition: color .15s; }
+  .link-row a:hover i,
+  .link-row a:focus-visible i { color: #00553f; }
+
+  @media (max-width: 37.5em) {
+    .page__content .link-row { gap: .6rem 1.2rem; font-size: .88em; }
+  }
+
+  /* ---- hidden means hidden --------------------------------------------- */
+
+  /* Every button that waits for its script carries `hidden`, so that nobody
+     without JavaScript is shown a control that cannot work. That relies on the
+     user-agent rule `[hidden] { display: none }`, which the theme's
+     `.btn { display: inline-block }` outranks -- so with JavaScript off the Bib,
+     Abstract and Copy-all buttons were all visible and dead. A UA-level default
+     losing to a component class is the one case `!important` is actually for. */
+  button[hidden],
+  .btn[hidden],
+  .pub-filter-bar[hidden] { display: none !important; }
+
+  /* ---- BibTeX buttons ------------------------------------------------- */
+
+  /* Sits inline with the paper's own Paper/Video/Code buttons. The theme
+     sizes .btn--small; these rules only change the colours and the cursor. */
+  .bibtex-copy {
+    background: #fff;
+    color: #4f4f4f;
+    border: 1px solid #c9c9c9;
+    cursor: pointer;
+    vertical-align: baseline;
+    transition: background .15s, color .15s, border-color .15s;
+  }
+  .bibtex-copy:hover { border-color: #00553f; color: #00553f; background: #fff; }
+  .bibtex-copy.is-done  { background: #00553f; border-color: #00553f; color: #fff; }
+  .bibtex-copy.is-error { background: #a8322d; border-color: #a8322d; color: #fff; }
+  .bibtex-copy:focus-visible { outline: 3px solid #00553f; outline-offset: 2px; }
+
+  /* ---- the portrait in the /jtorde/ heading ---------------------------- */
+
+  /* The heading image used to be foto_mia2.svg, whose intrinsic size was
+     232x232, and nothing constrained it -- it simply rendered at that size.
+     The replacement is a 464x464 WebP (2x, so it is sharp on a retina screen),
+     which would otherwise render twice as large. Pin it back to 232. */
+  .page__title img {
+    width: 232px;
+    height: auto;
+    max-width: 100%;
+  }
+
+  /* ---- publication clips ----------------------------------------------- */
+
+  /* The nine former GIFs are <video> now. The theme styles the teaser <img>,
+     not a <video>, so these copy the handful of properties that matter and
+     nothing else -- the cards look the same as when they were images.
+     `aspect-ratio` comes from the width/height attributes, so the space is
+     reserved before the poster decodes and the grid never jumps. */
+  .archive__item-teaser .pub-video {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: #f2f3f3;   /* what shows for the instant before the poster paints */
+  }
+
+  /* With prefers-reduced-motion the script turns the controls on instead of
+     autoplaying; give them room to sit on the frame. */
+  .archive__item-teaser .pub-video[controls] { min-height: 3rem; }
+
+  /* ---- research summary ----------------------------------------------- */
+
+  /* Matches the PUBLICATIONS heading below it, which carries the same styling
+     inline in _config.yml. */
+  .page__content .research-heading {
+    font-weight: bold;
+    font-size: 1.5em;
+    color: #000;
+  }
+
+  .page__content .research-summary { margin: 0 0 2em; }
+
+  /* Scoped under .page__content: the theme styles `.page__content p` (0,1,1),
+     which outranks a bare class selector, so an unscoped rule here silently
+     loses and the text renders at the theme's size instead of this one. */
+  .page__content .research-summary p {
+    font-size: .82em;
+    line-height: 1.7;
+    color: #4f4f4f;
+    max-width: 62em;   /* ~85 characters; the column is wider than prose wants */
+    margin: 0;
+  }
+
+  /* Bold is only ever used for the research topics, so it can carry the accent
+     colour and act as the scent trail through the paragraph. */
+  .page__content .research-summary strong {
+    color: #00553f;
+    font-weight: 700;
+  }
+
+  /* ---- authors + abstract disclosure ---------------------------------- */
+
+  /* Sits beside the Bib button and is styled the same, plus a caret that
+     turns when the panel is open. */
+  .pub-details-btn {
+    background: #fff;
+    color: #4f4f4f;
+    border: 1px solid #c9c9c9;
+    cursor: pointer;
+    vertical-align: baseline;
+    transition: background .15s, color .15s, border-color .15s;
+  }
+  .pub-details-btn:hover { border-color: #00553f; color: #00553f; background: #fff; }
+  .pub-details-btn:focus-visible { outline: 3px solid #00553f; outline-offset: 2px; }
+  .pub-details-btn[aria-expanded="true"] {
+    background: #00553f;
+    border-color: #00553f;
+    color: #fff;
+  }
+  .pub-details-btn::after {
+    content: "";
+    display: inline-block;
+    width: .42em;
+    height: .42em;
+    margin-left: .5em;
+    vertical-align: .12em;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    transform: rotate(45deg);
+    transform-origin: 60% 60%;
+    transition: transform .15s;
+  }
+  .pub-details-btn[aria-expanded="true"]::after { transform: rotate(-135deg); }
+
+  .pub-details[hidden] { display: none; }
+
+  /* Also scoped under .page__content -- see the note in the research block
+     above. The size is set once here and inherited; the children only differ in
+     weight and colour. */
+  .page__content .pub-details {
+    margin-top: .75em;
+    padding: .85em .95em;
+    background: #fbfbfb;
+    border: 1px solid #e2e2e2;
+    border-left: 3px solid #00553f;
+    border-radius: 3px;
+    font-size: .72em;    /* a step below the card's own excerpt text */
+    line-height: 1.6;
+    /* The cards sit three across and some of these abstracts run to 2,000
+       characters; without a cap one open panel would be taller than the rest of
+       the page. em, so the cap tracks the font size set just above. */
+    max-height: 26em;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  .page__content .pub-details p {
+    font-size: 1em;
+    line-height: inherit;
+    margin: 0 0 .7em;
+  }
+  .page__content .pub-details p:last-child { margin-bottom: 0; }
+
+  .page__content .pub-details__authors { color: #3f3f3f; font-weight: 600; }
+  .page__content .pub-details__abstract { color: #4f4f4f; text-align: left; hyphens: auto; }
+  .page__content .pub-details__empty { color: #6f6f6f; font-style: italic; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pub-details-btn,
+    .pub-details-btn::after { transition: none; }
+  }
+
+  /* "View .bib" next to the PUBLICATIONS heading. */
+  .bib-view-btn {
+    font-size: .5em;
+    vertical-align: middle;
+    margin-left: .6em;
+    font-weight: 700;
+    letter-spacing: .02em;
+  }
+
+  /* ---- /bibliography/ viewer ------------------------------------------ */
+
+  .bib-page-actions { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
+  .bib-count { font-size: .8em; color: #6f6f6f; }
+  .bib-viewer {
+    max-height: 75vh;
+    overflow: auto;
+    background: #fbfbfb;
+    border: 1px solid #e2e2e2;
+    border-radius: 4px;
+    padding: 1em 1.2em;
+    font-size: .78em;
+    line-height: 1.55;
+    white-space: pre;
+    tab-size: 4;
+  }
+  .bib-viewer:focus-visible { outline: 3px solid #00553f; outline-offset: 2px; }
+
+  /* ---- hidden means hidden --------------------------------------------- */
+
+  /* Every button that waits for its script carries `hidden`, so that nobody
+     without JavaScript is shown a control that cannot work. That relies on the
+     user-agent rule `[hidden] { display: none }`, which the theme's
+     `.btn { display: inline-block }` outranks -- so with JavaScript off the Bib,
+     Abstract and Copy-all buttons were all visible and dead. A UA-level default
+     losing to a component class is the one case `!important` is actually for. */
+  button[hidden],
+  .btn[hidden],
+  .pub-filter-bar[hidden] { display: none !important; }
+
+  /* ---- BibTeX buttons ------------------------------------------------- */
+
+  /* Sits inline with the paper's own Paper/Video/Code buttons. The theme
+     sizes .btn--small; these rules only change the colours and the cursor. */
+  .bibtex-copy {
+    background: #fff;
+    color: #4f4f4f;
+    border: 1px solid #c9c9c9;
+    cursor: pointer;
+    vertical-align: baseline;
+    transition: background .15s, color .15s, border-color .15s;
+  }
+  .bibtex-copy:hover { border-color: #00553f; color: #00553f; background: #fff; }
+  .bibtex-copy.is-done  { background: #00553f; border-color: #00553f; color: #fff; }
+  .bibtex-copy.is-error { background: #a8322d; border-color: #a8322d; color: #fff; }
+  .bibtex-copy:focus-visible { outline: 3px solid #00553f; outline-offset: 2px; }
+
+  /* ---- the portrait in the /jtorde/ heading ---------------------------- */
+
+  /* The heading image used to be foto_mia2.svg, whose intrinsic size was
+     232x232, and nothing constrained it -- it simply rendered at that size.
+     The replacement is a 464x464 WebP (2x, so it is sharp on a retina screen),
+     which would otherwise render twice as large. Pin it back to 232. */
+  .page__title img {
+    width: 232px;
+    height: auto;
+    max-width: 100%;
+  }
+
+  /* ---- publication clips ----------------------------------------------- */
+
+  /* The nine former GIFs are <video> now. The theme styles the teaser <img>,
+     not a <video>, so these copy the handful of properties that matter and
+     nothing else -- the cards look the same as when they were images.
+     `aspect-ratio` comes from the width/height attributes, so the space is
+     reserved before the poster decodes and the grid never jumps. */
+  .archive__item-teaser .pub-video {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: #f2f3f3;   /* what shows for the instant before the poster paints */
+  }
+
+  /* With prefers-reduced-motion the script turns the controls on instead of
+     autoplaying; give them room to sit on the frame. */
+  .archive__item-teaser .pub-video[controls] { min-height: 3rem; }
+
+  /* ---- research summary ----------------------------------------------- */
+
+  /* Matches the PUBLICATIONS heading below it, which carries the same styling
+     inline in _config.yml. */
+  .page__content .research-heading {
+    font-weight: bold;
+    font-size: 1.5em;
+    color: #000;
+  }
+
+  .page__content .research-summary { margin: 0 0 2em; }
+
+  /* Scoped under .page__content: the theme styles `.page__content p` (0,1,1),
+     which outranks a bare class selector, so an unscoped rule here silently
+     loses and the text renders at the theme's size instead of this one. */
+  .page__content .research-summary p {
+    font-size: .82em;
+    line-height: 1.7;
+    color: #4f4f4f;
+    max-width: 62em;   /* ~85 characters; the column is wider than prose wants */
+    margin: 0;
+  }
+
+  /* Bold is only ever used for the research topics, so it can carry the accent
+     colour and act as the scent trail through the paragraph. */
+  .page__content .research-summary strong {
+    color: #00553f;
+    font-weight: 700;
+  }
+
+  /* ---- authors + abstract disclosure ---------------------------------- */
+
+  /* Sits beside the Bib button and is styled the same, plus a caret that
+     turns when the panel is open. */
+  .pub-details-btn {
+    background: #fff;
+    color: #4f4f4f;
+    border: 1px solid #c9c9c9;
+    cursor: pointer;
+    vertical-align: baseline;
+    transition: background .15s, color .15s, border-color .15s;
+  }
+  .pub-details-btn:hover { border-color: #00553f; color: #00553f; background: #fff; }
+  .pub-details-btn:focus-visible { outline: 3px solid #00553f; outline-offset: 2px; }
+  .pub-details-btn[aria-expanded="true"] {
+    background: #00553f;
+    border-color: #00553f;
+    color: #fff;
+  }
+  .pub-details-btn::after {
+    content: "";
+    display: inline-block;
+    width: .42em;
+    height: .42em;
+    margin-left: .5em;
+    vertical-align: .12em;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    transform: rotate(45deg);
+    transform-origin: 60% 60%;
+    transition: transform .15s;
+  }
+  .pub-details-btn[aria-expanded="true"]::after { transform: rotate(-135deg); }
+
+  .pub-details[hidden] { display: none; }
+
+  /* Also scoped under .page__content -- see the note in the research block
+     above. The size is set once here and inherited; the children only differ in
+     weight and colour. */
+  .page__content .pub-details {
+    margin-top: .75em;
+    padding: .85em .95em;
+    background: #fbfbfb;
+    border: 1px solid #e2e2e2;
+    border-left: 3px solid #00553f;
+    border-radius: 3px;
+    font-size: .72em;    /* a step below the card's own excerpt text */
+    line-height: 1.6;
+    /* The cards sit three across and some of these abstracts run to 2,000
+       characters; without a cap one open panel would be taller than the rest of
+       the page. em, so the cap tracks the font size set just above. */
+    max-height: 26em;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  .page__content .pub-details p {
+    font-size: 1em;
+    line-height: inherit;
+    margin: 0 0 .7em;
+  }
+  .page__content .pub-details p:last-child { margin-bottom: 0; }
+
+  .page__content .pub-details__authors { color: #3f3f3f; font-weight: 600; }
+  .page__content .pub-details__abstract { color: #4f4f4f; text-align: left; hyphens: auto; }
+  .page__content .pub-details__empty { color: #6f6f6f; font-style: italic; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pub-details-btn,
+    .pub-details-btn::after { transition: none; }
+  }
+
+  /* "View .bib" next to the PUBLICATIONS heading. */
+  .bib-view-btn {
+    font-size: .5em;
+    vertical-align: middle;
+    margin-left: .6em;
+    font-weight: 700;
+    letter-spacing: .02em;
+  }
+
+  /* ---- /bibliography/ ------------------------------------------------- */
+
+  .bib-page-actions { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
+  .bib-count { font-size: .8em; color: #6f6f6f; }
+
+  /* The page is server-rendered now: one entry per <li>, citation as readable
+     text with the BibTeX underneath. Scoped under .page__content so the theme's
+     own list and heading rules do not win. */
+  .page__content .bib-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: bib;
+  }
+  .page__content .bib-entry {
+    margin: 0 0 2em;
+    padding: 0 0 0 2.6rem;
+    position: relative;
+    counter-increment: bib;
+  }
+  .page__content .bib-entry::before {
+    content: counter(bib);
+    position: absolute;
+    left: 0;
+    top: .15em;
+    font-size: .8em;
+    font-variant-numeric: tabular-nums;
+    color: #9a9a9a;
+  }
+  .page__content .bib-entry__title {
+    font-size: 1.02em;
+    font-weight: 700;
+    line-height: 1.35;
+    margin: 0 0 .25em;
+    border-bottom: 0;
+    color: #1f1f1f;
+  }
+  .page__content .bib-entry__authors {
+    font-size: .82em;
+    line-height: 1.5;
+    color: #3f3f3f;
+    margin: 0 0 .2em;
+  }
+  .page__content .bib-entry__venue {
+    font-size: .8em;
+    color: #6f6f6f;
+    margin: 0 0 .5em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .2em .9em;
+  }
+  .bib-entry__where { font-style: italic; }
+  .bib-entry__doi { color: #00553f; }
+  .page__content .bib-entry__abstract {
+    font-size: .8em;
+    line-height: 1.6;
+    color: #4f4f4f;
+    margin: 0 0 .6em;
+    max-width: 62em;
+  }
+  .bib-entry__raw {
+    background: #fbfbfb;
+    border: 1px solid #e2e2e2;
+    border-radius: 4px;
+    padding: .8em 1em;
+    font-size: .72em;
+    line-height: 1.55;
+    /* `pre`, not `pre-wrap`: the .bib is already wrapped at 92 columns, so the
+       block renders exactly as the file is written. Re-wrapping it to the
+       container broke lines in the middle and made the entries look ragged. */
+    white-space: pre;
+    overflow-x: auto;
+    tab-size: 4;
+    margin: 0 0 .5em;
+  }
+  .bib-entry__raw:focus-visible { outline: 3px solid #00553f; outline-offset: 2px; }
+
+  /* The theme floats these cards three-up and uses :nth-child(3n+1/2/3) to set
+     `clear` and the left margin. nth-child keeps counting hidden elements, so
+     filtering would otherwise leave blank holes in the grid. The filter script
+     stamps data-col by *visible* position and these rules take over -- they are
+     more specific than the theme's, and only ever match once something has been
+     filtered. Values copied from the compiled theme CSS so the geometry is
+     unchanged. */
+  @media (min-width: 37.5em) {
+    .feature__wrapper .feature__item[data-col="1"] {
+      clear: both;
+      margin-inline-start: 0;
+    }
+    .feature__wrapper .feature__item[data-col="2"],
+    .feature__wrapper .feature__item[data-col="3"] {
+      clear: none;
+      margin-inline-start: 1.6949152542%;
+    }
+  }
+</style>

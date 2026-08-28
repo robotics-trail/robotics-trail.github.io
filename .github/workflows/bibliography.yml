@@ -1,0 +1,25 @@
+# Catches a `bibkey` in _data/publications.yml that does not exist in
+# bibliography.bib -- which would leave a "Bib" button that silently fails.
+#
+# Nothing is generated from the .bib, so there is no build step to keep in sync
+# and nothing to run by hand: edit the .bib, commit, done. This is only a guard.
+#
+# It does NOT build or deploy the site; GitHub Pages still does that from master.
+name: bibliography
+
+on:
+  push:
+    paths: ['bibliography.bib', '_data/publications.yml', 'scripts/check-bibliography.py']
+  pull_request:
+    paths: ['bibliography.bib', '_data/publications.yml', 'scripts/check-bibliography.py']
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: every bibkey resolves
+        run: python3 scripts/check-bibliography.py

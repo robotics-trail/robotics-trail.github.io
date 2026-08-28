@@ -1,0 +1,33 @@
+# The research summary shown above the publication list on the homepage,
+# rendered by _includes/research-summary.html.
+#
+# One paragraph, deliberately. It is the only continuous prose on the site, and
+# it is what a reader -- or a search engine, or a language model -- goes on to
+# work out what the lab does before scrolling 31 paper titles.
+#
+# Conventions worth keeping if you edit it:
+#
+#   * Bold marks the research topics and nothing else. Those phrases are what
+#     somebody would actually type into a search box, which is most of the
+#     reason this paragraph exists.
+#   * No individual papers by name. The list below already says which work is
+#     which, and naming them here dates the paragraph every time a new one lands.
+#   * The learning-based work leads. Optimization is mentioned and deliberately
+#     given less room.
+#
+# Markdown; rendered with `markdownify`.
+
+body: >
+  We work on **learning-based trajectory planning**: training neural networks to
+  produce onboard, in milliseconds, the motions a classical planner needs seconds
+  to compute, and to keep doing so outside the simulator they were trained in.
+  Tied closely to this is our work on **imposing hard constraints on neural
+  networks**, so that a learned policy satisfies safety and dynamic limits by
+  construction — for any weights and any input — rather than merely being
+  penalised when it breaks them, which is what allows a learned planner to
+  inherit the guarantees its classical counterpart came with. We also work on
+  **optimization-based trajectory planning**, both in its own right and as the
+  source of the supervision and the guarantees the learned methods are asked to
+  preserve. Most of this flies, on **aerial robots** moving through unknown,
+  cluttered and dynamic environments, and increasingly walks, on **legged
+  robots** — along with the **state estimation** all of it rests on.

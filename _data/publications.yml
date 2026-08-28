@@ -1,0 +1,315 @@
+# =============================================================================
+#  TRAIL publications
+# =============================================================================
+#  These entries render exactly the cards the site has always shown. The only
+#  thing that changed is that the list moved out of _config.yml (which Jekyll
+#  never reloads) and each entry gained `topics`, which drive the filter
+#  buttons, and a real `alt`.
+#
+#  FIELDS
+#    title        card heading
+#    bibkey       the entry in _bibliography/bibliography.bib. NOTHING is
+#                 rendered from it today -- the card is built from `excerpt`
+#                 below, exactly as before. It is here so the bibliographic
+#                 facts (authors, venue, year, DOI, citations) have one home
+#                 instead of being retyped, and so they can be switched on
+#                 later: see the commented block in
+#                 _includes/publication-row.html.
+#    also         further bibkeys for the same work (a conference paper and
+#                 its journal version).
+#    topics       any of: planning, optimization, learning, aerial, legged,
+#                 estimation, constrained-nn, other. Drives the filter buttons.
+#                 See _data/topics.yml.
+#    image_path   figure, relative to the site root
+#    alt          REQUIRED. One descriptive sentence, for screen readers.
+#                 (Every entry used to say "placeholder image 1".)
+#    image_caption   optional caption under the figure
+#    excerpt      the card body. Markdown; {: .btn ...} adds button styling.
+#                 This is what the page actually renders.
+#
+#  TO ADD A PAPER: copy a block to the top, fill it in, commit.
+# =============================================================================
+
+- title: 'FOCI'
+  bibkey: andreu2025foci
+  topics: [planning, optimization, legged]
+  image_path: 'assets/images/foci.webp'
+  image_width: 551
+  image_height: 350
+  alt: 'A quadrotor trajectory optimized directly through a Gaussian-splat reconstruction of a cluttered scene.'
+  excerpt: 'Trajectory Optimization on Gaussian Splats<br/> [Paper](https://arxiv.org/abs/2505.08510){: .btn .btn--primary .btn--small .btn--success} [Project](https://rffr.leggedrobotics.com/works/foci/){: .btn .btn--primary .btn--small .btn--info} [Code](https://github.com/leggedrobotics/foci){: .btn .btn--primary .btn--small .btn--primary} **IROS 2025**'
+
+- title: 'DiffSim2Real'
+  bibkey: bagajo2024diffsim2real
+  topics: [learning, legged]
+  image_path: 'assets/images/diffsim2real.webp'
+  image_width: 800
+  image_height: 507
+  alt: 'A quadruped walking under a control policy trained entirely inside a differentiable simulator.'
+  excerpt: 'Deploying Quadrupedal Locomotion Policies Purely Trained in Differentiable Simulation<br/> [Paper](https://arxiv.org/abs/2411.02189){: .btn .btn--primary .btn--small .btn--success} **DiffOpt, CoRL 2024**'
+
+- title: 'Continuous-Time State Estimation'
+  bibkey: talbot2024continuous
+  topics: [estimation]
+  image_path: 'assets/images/continuous_time_survey.webp'
+  image_width: 569
+  image_height: 361
+  alt: 'Taxonomy diagram comparing discrete-time and continuous-time formulations for robot state estimation.'
+  excerpt: 'Continuous-Time State Estimation Methods in Robotics: A Survey<br/> [Paper](https://arxiv.org/abs/2411.03951){: .btn .btn--primary .btn--small .btn--success} **T-RO**'
+
+- title: 'PRIMER'
+  bibkey: kondo2024primer
+  topics: [planning, learning, aerial]
+  image_path: 'assets/images/primer.webp'
+  image_width: 800
+  image_height: 507
+  alt: 'Several quadrotors flying through a shared space, each tracking the others with onboard cameras.'
+  excerpt: 'Perception-Aware Learning-based Multiagent Trajectory Planner<br/> [Paper](https://arxiv.org/abs/2406.10060){: .btn .btn--primary .btn--small .btn--success} **ICRA 2025**'
+
+- title: 'Differentiable Simulation'
+  bibkey: schwarke2025learning
+  topics: [learning, legged]
+  image_path: 'assets/images/diff_sim.webp'
+  image_width: 414
+  image_height: 262
+  alt: 'Gradient flow through a differentiable contact model used to train a quadrupedal locomotion policy.'
+  excerpt: 'Learning Quadrupedal Locomotion via Differentiable Simulation<br/> [Paper](https://arxiv.org/abs/2404.02887){: .btn .btn--primary .btn--small .btn--success} [Video](https://www.youtube.com/watch?v=wmyp76Y5mPg){: .btn .btn--primary .btn--small .btn--info} **In review**'
+
+- title: 'RAYEN'
+  bibkey: tordesillas2023rayen
+  topics: [constrained-nn, learning, optimization]
+  image_path: 'assets/images/rayen.webp'
+  image_width: 800
+  image_height: 507
+  alt: 'Diagram of the RAYEN layer projecting a neural network output onto a convex feasible set along a ray.'
+  excerpt: 'Imposition of Hard Convex Constraints on Neural Networks<br/> [Paper](http://arxiv.org/abs/2307.08336){: .btn .btn--primary .btn--small .btn--success} [Code](https://github.com/leggedrobotics/rayen){: .btn .btn--primary .btn--small .btn--primary}  **In review**'
+
+- title: 'Tutorial'
+  topics: [optimization, planning]
+  image_path: 'assets/images/tutorial_opt.webp'
+  image_width: 800
+  image_height: 507
+  alt: 'Title slide of the tutorial linking convex optimization, optimal control and spline parameterizations.'
+  excerpt: 'Optimization, Optimal Control, Trajectory Optimization, and Splines<br/> [Video](https://www.youtube.com/watch?v=j82Ia436DYY){: .btn .btn--primary .btn--small .btn--info}'
+
+- title: 'RMADER Planner'
+  bibkey: kondo2023robustRAL
+  also: [kondo2023robust]
+  topics: [planning, optimization, aerial]
+  image_path: 'assets/images/rmader.webp'
+  image_width: 414
+  image_height: 262
+  alt: 'Two quadrotors negotiating overlapping trajectories despite delayed communication between them.'
+  excerpt: 'Decentralized and Asynchronous Multiagent Trajectory Planner Robust to Comm. Delay<br/> [Best Poster Award in CAMRS Workshop (ICRA)](https://sites.google.com/view/camrs-icra2023){: .btn .btn--primary .btn--small .btn--danger} <br/> [RA-L Paper](https://arxiv.org/abs/2303.06222){: .btn .btn--primary .btn--small .btn--success} [ICRA Paper](https://arxiv.org/abs/2209.13667){: .btn .btn--primary .btn--small .btn--success} [Video](https://youtu.be/i1d8di2Nrbs){: .btn .btn--primary .btn--small .btn--info} [Code](https://github.com/mit-acl/rmader){: .btn .btn--primary .btn--small .btn--primary}  **RA-L and ICRA 2023**'
+
+- title: 'PhD Thesis'
+  bibkey: torres2022trajectory
+  topics: [planning, optimization, aerial]
+  image_path: 'assets/images/phd_defense.webp'
+  image_width: 800
+  image_height: 504
+  alt: 'Jesus Tordesillas presenting the final slide of his PhD defense at MIT.'
+  excerpt: 'Trajectory Planning for Flights in Multiagent and Dynamic Environments <br/> [Video of the defense](https://www.youtube.com/watch?v=ne0AigHwlEw){: .btn .btn--primary .btn--small .btn--info} [Dissertation](https://dspace.mit.edu/handle/1721.1/147446){: .btn .btn--primary .btn--small .btn--success}'
+
+- title: 'Deep-PANTHER Planner'
+  bibkey: tordesillas2022deeppanther
+  topics: [planning, learning, aerial]
+  image_path: 'assets/images/deep_panther.webp'
+  image_width: 800
+  image_height: 504
+  alt: 'A learned planner producing candidate trajectories around a moving obstacle in a single forward pass.'
+  excerpt: 'Deep-PANTHER: Learning-Based Perception-Aware Traj. Planner in Dynamic Enviroments <br/> [Paper](https://arxiv.org/abs/2209.01268){: .btn .btn--primary .btn--small .btn--success} [Video](https://www.youtube.com/watch?v=53GBjP1jFW8){: .btn .btn--primary .btn--small .btn--info} [Code](https://github.com/mit-acl/deep_panther){: .btn .btn--primary .btn--small .btn--primary} **RA-L**'
+
+- title: 'PANTHER Planner'
+  bibkey: tordesillas2021panther
+  topics: [planning, optimization, aerial]
+  image_path: 'assets/images/panther_cropped-poster.webp'
+  image_width: 342
+  image_height: 220
+  video: 'assets/images/panther_cropped'   # .webm and .mp4 sit beside the poster
+  alt: 'A quadrotor keeping a moving obstacle inside its camera field of view while dodging it.'
+  excerpt: 'Perception-Aware Trajectory Planner in Dynamic Environments <br/> [Paper](https://arxiv.org/abs/2103.06372){: .btn .btn--primary .btn--small .btn--success} [Video](https://www.youtube.com/watch?v=jKmyW6v73tY){: .btn .btn--primary .btn--small .btn--info} [Code](https://github.com/mit-acl/panther){: .btn .btn--primary .btn--small .btn--primary} **IEEE Access**'
+
+- title: 'MADER Planner'
+  bibkey: tordesillas2020mader
+  topics: [planning, optimization, aerial]
+  image_path: 'assets/images/mader.webp'
+  image_width: 800
+  image_height: 520
+  alt: 'Several quadrotors exchanging trajectories in flight to cross a shared workspace without collisions.'
+  excerpt: 'Trajectory Planner in Multi-Agent and Dynamic Environments <br/> [Paper](https://arxiv.org/abs/2010.11061){: .btn .btn--primary .btn--small .btn--success} [Video](https://www.youtube.com/watch?v=aoSoiZDfxGE){: .btn .btn--primary .btn--small .btn--info} [Code](https://github.com/mit-acl/mader){: .btn .btn--primary .btn--small .btn--primary} **T-RO**'
+
+- title: 'MINVO Basis'
+  bibkey: tordesillas2020minvo
+  topics: [optimization, planning]
+  image_path: 'assets/images/minvo.webp'
+  image_width: 800
+  image_height: 510
+  alt: 'A polynomial curve enclosed by the minimum-volume simplex given by the MINVO basis.'
+  excerpt: 'Finding Simplexes with Minimum Volume Enclosing Polynomial Curves <br/> [Paper](https://arxiv.org/abs/2010.10726){: .btn .btn--primary .btn--small .btn--success} [Video](https://www.youtube.com/watch?v=x5ORkDCe4O0){: .btn .btn--primary .btn--small .btn--info} [Code](https://github.com/mit-acl/minvo){: .btn .btn--primary .btn--small .btn--primary} **CAD journal**'
+
+- title: 'LION Estimator'
+  bibkey: andrea2020lion
+  topics: [estimation]
+  image_path: 'assets/images/mine1.webp'
+  image_width: 800
+  image_height: 501
+  alt: 'A robot carrying a lidar payload 275 metres underground in a West Virginia mine.'
+  image_caption: 'Mine in West Virginia, 275 meters underground'
+  excerpt: 'Lidar-Inertial Observability-Aware Navigator for Vision-Denied Environments <br/> [Paper](https://arxiv.org/abs/2102.03443){: .btn .btn--primary .btn--small .btn--success} [Video](https://www.youtube.com/watch?v=Jd-sqBioarI){: .btn .btn--primary .btn--small .btn--info} **ISER 2020**'
+
+- title: 'Traversability'
+  bibkey: alatur2020autonomous
+  topics: [planning, estimation]
+  image_path: '/assets/images/mine2.webp'
+  image_width: 800
+  image_height: 503
+  alt: 'A robot traversing loose rubble in an unlit underground mine passage.'
+  image_caption: 'Mine in West Virginia, 275 meters underground'
+  excerpt: 'Autonomous Navigation in GPS-Denied and Perceptually-Degraded Environments<br/> [Paper](https://arxiv.org/abs/2101.11110){: .btn .btn--primary .btn--small .btn--success} [Video](https://youtu.be/cjxN2Tu-qVY){: .btn .btn--primary .btn--small .btn--info} **ISER 2020**'
+
+- title: 'NeBula Autonomy'
+  bibkey: agha2021nebula
+  topics: [estimation, planning, aerial, legged]
+  image_path: 'assets/images/nebula.webp'
+  image_width: 414
+  image_height: 262
+  alt: 'Team CoSTAR''s fleet of wheeled, legged and aerial robots in the DARPA Subterranean Challenge.'
+  excerpt: 'DARPA Subterranean Challenge <br/> [1<sup>st</sup> place in  Urban Circuit (Darpa Subt. Challenge)](https://www.jpl.nasa.gov/news/news.php?feature=7607#masterslider:~:text=Taking%20first%20in%20the%20competition%20was,by%20NASA''s%20Jet%20Propulsion%20Laboratory%20){: .btn .btn--primary .btn--normal .btn--danger} <br/> [2<sup>nd</sup> place in  Tunnel Circuit (Darpa Subt. Challenge)](https://lids.mit.edu/news-and-events/news/jpl-team-co-led-luca-carlone-participates-darpa-subterranean-challenge#page-title:~:text=Challenge-,JPL%20team%20co%2Dled%20by%20Luca%20Carlone%20participates%20in%20DARPA%20Subterranean%20Challenge,Updated%20August%2029%2C%202019%3A%20We%20are%20happy%20to%20share%20that%20the%20CoSTAR%20team%20took%20second%20place%20in%20the%20Tunnel%20Circuit%20competition%20of%20the%20DARPA%20Subterranean%20Challenge%20on%20Aug.%2022%2C%202019.,-The%20Subterranean%20Challenge%20will%20continue%20with%20the%20Urban%20Circuit%20in%20February%202020.){: .btn .btn--primary .btn--normal .btn--danger} <br/> [Paper](https://arxiv.org/abs/2103.11470){: .btn .btn--primary .btn--small .btn--success} [Video](https://www.youtube.com/@teamcostar853){: .btn .btn--primary .btn--small .btn--info} [Code](https://github.com/NeBula-Autonomy){: .btn .btn--primary .btn--small .btn--primary}  **JFR**'
+
+- title: 'FASTER Planner'
+  bibkey: tordesillas2020faster
+  also: [tordesillas2019faster]
+  topics: [planning, optimization, aerial]
+  image_path: '/assets/images/faster_cut_compressed-poster.webp'
+  image_width: 590
+  image_height: 370
+  video: '/assets/images/faster_cut_compressed'   # .webm and .mp4 sit beside the poster
+  alt: 'A quadrotor flying aggressively through an unknown cluttered forest, replanning as obstacles appear.'
+  excerpt: 'Fast and Safe Trajectory Planner for Navigation in Unknown Environments.<br/> [Finalist: Best Paper Award in Search and Rescue Robotics](https://www.iros2019.org/awards#main-content:~:text=FASTER%3A%20Fast%20and%20Safe%20Trajectory%20Planner%20for%20Flights%20in%20Unknown%20Environments){: .btn .btn--primary .btn--small .btn--danger} <br/> [IROS Paper](https://arxiv.org/abs/1903.03558){: .btn .btn--primary .btn--small .btn--success} [T-RO Paper](https://arxiv.org/abs/2001.04420){: .btn .btn--primary .btn--small .btn--success} [Video](https://www.youtube.com/watch?v=fkkkgomkX10){: .btn .btn--primary .btn--small .btn--info} [Code](https://github.com/mit-acl/faster){: .btn .btn--primary .btn--small .btn--primary}  **T-RO and IROS 2019**'
+
+- title: 'Drone detection using depth maps'
+  bibkey: carrio2020onboard
+  topics: [estimation, learning, aerial]
+  image_path: '/assets/images/detection.webp'
+  image_width: 800
+  image_height: 502
+  alt: 'Depth image with a second drone segmented and localized in 3D by the onboard detector.'
+  excerpt: 'Onboard Detection and Localization of Drones Using Depth Maps.<br/> [Paper](https://ieeexplore.ieee.org/document/8984298){: .btn .btn--primary .btn--small .btn--success} [Video](https://www.youtube.com/watch?v=IAvafBR3A00){: .btn .btn--primary .btn--small .btn--info}  **IEEE Access 2020**'
+
+- title: 'Multi-Fidelity Planner'
+  bibkey: tordesillas2019real
+  topics: [planning, optimization, aerial]
+  image_path: '/assets/images/drone.webp'
+  image_width: 800
+  image_height: 500
+  alt: 'A quadrotor planning with a coarse long-horizon model and a fine short-horizon model at once.'
+  excerpt: 'Real-Time Planning with Multi-Fidelity Models for Agile Flights in Unknown Environments.<br/> [Paper](https://arxiv.org/abs/1810.01035){: .btn .btn--primary .btn--small .btn--success} [Video](https://www.youtube.com/watch?v=E4V2_B8x-UI){: .btn .btn--primary .btn--small .btn--info} [Code](https://github.com/jtorde/uav_trajectory_optimizer){: .btn .btn--primary .btn--small .btn--primary} **ICRA 2019**'
+
+- title: 'Trajectory Optimization'
+  bibkey: luskjtorde2019
+  topics: [optimization, planning, aerial]
+  image_path: '/assets/images/acrobatics.webp'
+  image_width: 800
+  image_height: 499
+  alt: 'Optimized acrobatic multirotor trajectory including a full flip.'
+  excerpt: 'Trajectory optimization for multirotors using Gurobi<br/> [Paper](https://github.com/jtorde/uav_trajectory_optimizer_gurobi/blob/master/Trajectory_Optimization_for_Multirotors.pdf){: .btn .btn--primary .btn--small .btn--success} [Video](https://www.youtube.com/watch?v=WnfzMO0pXsc){: .btn .btn--primary .btn--small .btn--info} [Code](https://github.com/jtorde/uav_trajectory_optimizer_gurobi){: .btn .btn--primary .btn--small .btn--primary}'
+
+- title: 'Drone Racing'
+  bibkey: tordesillas2019trajectory
+  topics: [optimization, planning, aerial]
+  image_path: '/assets/images/racing_compressed-poster.webp'
+  image_width: 422
+  image_height: 264
+  video: '/assets/images/racing_compressed'   # .webm and .mp4 sit beside the poster
+  alt: 'Simulated minimum-time racing trajectory threading a sequence of gates.'
+  excerpt: 'Trajectory optimization using GPOPS-II<br/> [Thesis](https://dspace.mit.edu/handle/1721.1/122420){: .btn .btn--primary .btn--small .btn--success} [Video](https://www.youtube.com/watch?v=-YY_0Ib-o_4){: .btn .btn--primary .btn--small .btn--info} [Code](https://github.com/jtorde/drone_racing_gpops){: .btn .btn--primary .btn--small .btn--primary}  **Master''s Thesis**'
+
+- title: 'Aerial Manipulation'
+  topics: [aerial]
+  image_path: '/assets/images/hex_compressed-poster.webp'
+  image_width: 422
+  image_height: 264
+  video: '/assets/images/hex_compressed'   # .webm and .mp4 sit beside the poster
+  alt: 'A hexacopter with canted motors tilting in place to carry a flat plate.'
+  excerpt: 'Agile Plate Transport with a Hexacopter with Canted Motors.<br/> [Video](https://www.youtube.com/watch?v=cZGYI38smfY){: .btn .btn--primary .btn--small .btn--info}'
+
+- title: 'Adaptive Control for a Multirotor'
+  bibkey: jtordeadaptive2019
+  topics: [aerial]
+  image_path: '/assets/images/adaptive_control.webp'
+  image_width: 800
+  image_height: 500
+  alt: 'Tracking-error curves for four adaptive controllers applied to the same multirotor model.'
+  excerpt: 'TEB, CG, BFG and CF adaptive controllers<br/> [Paper](https://github.com/jtorde/uav_adaptive_control/blob/master/Project_Jesus_Tordesillas_Torres.pdf){: .btn .btn--primary .btn--small .btn--success} [Code](https://github.com/jtorde/uav_adaptive_control){: .btn .btn--primary .btn--small .btn--primary}'
+
+- title: 'Reinforcement Learning vs Opt. Control'
+  topics: [learning, optimization]
+  image_path: '/assets/images/reinforcement_learning.webp'
+  image_width: 800
+  image_height: 500
+  alt: 'Performance and robustness curves comparing a model-based controller against a model-free policy.'
+  excerpt: 'A numerical comparison of performance and robustness in model-based and model-free methodologies.<br/> [Paper](https://arxiv.org/abs/1904.01200){: .btn .btn--primary .btn--small .btn--success}'
+
+- title: 'Finite Element Simulation for C-Legs'
+  topics: [legged]
+  image_path: '/assets/images/leg_fem_compressed-poster.webp'
+  image_width: 422
+  image_height: 264
+  video: '/assets/images/leg_fem_compressed'   # .webm and .mp4 sit beside the poster
+  alt: 'Finite element stress animation of a compliant C-shaped robot leg deforming under load.'
+  excerpt: 'Finite Element Simulation for C-Legs using Autodesk Simulation Mechanical.<br/> [Thesis](http://oa.upm.es/42893/1/TFG_JESUS_TORDESILLAS_TORRES.pdf){: .btn .btn--primary .btn--small .btn--success} [Video](https://www.youtube.com/watch?v=bkLuSU4EJuQ){: .btn .btn--primary .btn--small .btn--info} **Undergraduate thesis**'
+
+- title: 'Hexapod Design'
+  topics: [legged]
+  image_path: '/assets/images/robot_animation_compressed-poster.webp'
+  image_width: 420
+  image_height: 260
+  video: '/assets/images/robot_animation_compressed'   # .webm and .mp4 sit beside the poster
+  alt: 'Rotating CAD render of the hexapod robot assembly.'
+  excerpt: '3D design of a hexapod robot using Autodesk Inventor.<br/> [Plans](http://oa.upm.es/42893/1/TFG_JESUS_TORDESILLAS_TORRES.pdf){: .btn .btn--primary .btn--small .btn--success} [Video](https://www.youtube.com/watch?v=lzc80atU2zc){: .btn .btn--primary .btn--small .btn--info}  **Undergraduate thesis**'
+
+- title: 'Gait Models for a Hexapod Robot'
+  topics: [legged]
+  image_path: '/assets/images/gaits_compressed-poster.webp'
+  image_width: 422
+  image_height: 264
+  video: '/assets/images/gaits_compressed'   # .webm and .mp4 sit beside the poster
+  alt: 'Side-by-side animation of tripod, ripple and wave gaits on a six-legged robot.'
+  excerpt: 'Analysis of different gaits Models applied to a hexapod robot with C-Legs. <br/> [Thesis](http://oa.upm.es/42893/1/TFG_JESUS_TORDESILLAS_TORRES.pdf){: .btn .btn--primary .btn--small .btn--success} [Video](https://www.youtube.com/watch?v=ox8fF_eNNUM){: .btn .btn--primary .btn--small .btn--info} **Undergraduate thesis**'
+
+- title: 'Robot Kinematics with C-Legs'
+  bibkey: tordesillas2016modelo
+  topics: [legged]
+  image_path: '/assets/images/kinetic_model_compressed-poster.webp'
+  image_width: 422
+  image_height: 264
+  video: '/assets/images/kinetic_model_compressed'   # .webm and .mp4 sit beside the poster
+  alt: 'Animated kinematic model of a hexapod robot rolling forward on curved C-shaped legs.'
+  excerpt: 'Kinematic model of a hexapod robot with C-Legs. Simulations with Autodesk Inventor.<br/> [Paper](http://oa.upm.es/43381/1/paper_58.pdf){: .btn .btn--primary .btn--small .btn--success} [Video](https://www.youtube.com/watch?v=li80YPY1n2w){: .btn .btn--primary .btn--small .btn--info} **Jorn. de Automática 2016**'
+
+- title: 'Test Bench for C-Legs'
+  topics: [legged]
+  image_path: '/assets/images/test_bench_compressed-poster.webp'
+  image_width: 422
+  image_height: 264
+  video: '/assets/images/test_bench_compressed'   # .webm and .mp4 sit beside the poster
+  alt: 'Bench-top rig spinning a single C-leg against an instrumented surface.'
+  excerpt: 'Test Bench to tests C-Legs built using and Arduino Mega and drivers L298N.<br/> [Thesis](http://oa.upm.es/42893/1/TFG_JESUS_TORDESILLAS_TORRES.pdf){: .btn .btn--primary .btn--small .btn--success} [Video](https://www.youtube.com/watch?v=HJcVuxUXUYc){: .btn .btn--primary .btn--small .btn--info} **Undergraduate thesis**'
+
+- title: 'Robotic Manipulator'
+  topics: [other]
+  image_path: '/assets/images/robotic_manipulator.webp'
+  image_width: 800
+  image_height: 502
+  alt: 'Bench-built robotic arm driven by an Arduino and a LabVIEW front panel.'
+  excerpt: 'Robotic Manipulator design and building using Arduino and LabView.<br/> [Video](https://www.youtube.com/watch?v=cFqCvjnh-FU){: .btn .btn--primary .btn--small .btn--info}'
+
+- title: 'FPGA and VHDL'
+  topics: [other]
+  image_path: '/assets/images/fpga.webp'
+  image_width: 800
+  image_height: 543
+  alt: 'FPGA development board wired up for the VHDL schematic implemented in this project.'
+  excerpt: 'Schematic design and implementation on a FPGA.<br/> [Schematic designed](/assets/images/vhdl_schematic_designed.pdf){: .btn .btn--primary .btn--small .btn--success}'
+

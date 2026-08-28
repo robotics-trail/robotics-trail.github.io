@@ -1,6 +1,10 @@
 ---
 permalink: /people/
 title: "People"
+seo_title: "People \u2014 TRAIL robotics lab at Comillas-ICAI"
+description: "The TRAIL team at Comillas-ICAI: Prof. Jesus Tordesillas, with
+  postdocs and PhD, master's and undergraduate students working on robot
+  trajectory planning."
 ---
 
 **Faculty**      

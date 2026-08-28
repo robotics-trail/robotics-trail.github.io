@@ -1,0 +1,14 @@
+{%- comment -%}
+  The row of institution logos.
+
+  Content comes from _data/affiliations.yml. The logos are normalised to a
+  common height in CSS rather than being shown at their natural sizes, which
+  ranged from 121x101 to 278x74 -- that spread is why they never lined up, and
+  why they stacked so badly once the theme's float was dropped on small
+  screens. The row wraps as whole logos instead.
+{%- endcomment -%}
+<ul class="logo-strip">
+  {%- for a in site.data.affiliations -%}
+  <li><img src="{{ a.image | relative_url }}" alt="{{ a.name }}" loading="lazy" decoding="async"></li>
+  {%- endfor -%}
+</ul>

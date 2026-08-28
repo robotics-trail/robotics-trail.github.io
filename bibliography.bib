@@ -1,0 +1,589 @@
+% Encoding: UTF-8
+
+@inproceedings{bagajo2024diffsim2real,
+	title={DiffSim2Real: Deploying Quadrupedal Locomotion Policies Purely Trained in Differentiable Simulation},
+	author={Bagajo, Joshua and Schwarke, Clemens and Klemm, Victor and Georgiev, Ignat and Sleiman, Jean Pierre and Tordesillas, Jesus and Garg, Animesh and Hutter, Marco},
+	booktitle={CoRL 2024 Workshop on Differentiable Optimization Everywhere: Simulation, Estimation, Learning, and Control},
+	year={2024},
+	url={https://openreview.net/forum?id=2pBmIfxs2t},
+	abstract     = {Differentiable simulators provide analytic gradients, enabling more sample-efficient
+		learning algorithms and paving the way for data intensive learning tasks such as learning
+		from images. In this work, we demonstrate that locomotion policies trained with analytic
+		gradients from a differentiable simulator can be successfully transferred to the real world.
+		Typically, simulators that offer informative gradients lack the physical accuracy needed for
+		sim-to-real transfer, and vice-versa. A key factor in our success is a smooth contact model
+		that combines informative gradients with physical accuracy, ensuring effective transfer of
+		learned behaviors. To the best of our knowledge, this is the first time a real quadrupedal
+		robot is able to locomote after training exclusively in a differentiable simulation.},
+	doi          = {10.48550/arXiv.2411.02189}
+}
+
+@InProceedings{schwarke2025learning,
+	title = 	 {Learning Deployable Locomotion Control via Differentiable Simulation},
+	author =       {Schwarke, Clemens and Klemm, Victor and Bagajo, Joshua and Sleiman, Jean Pierre and Georgiev, Ignat and Tordesillas, Jesus and Hutter, Marco},
+	booktitle = 	 {Proceedings of The 9th Conference on Robot Learning},
+	pages = 	 {3665--3684},
+	year = 	 {2025},
+	editor = 	 {Lim, Joseph and Song, Shuran and Park, Hae-Won},
+	volume = 	 {305},
+	series = 	 {Proceedings of Machine Learning Research},
+	month = 	 {27--30 Sep},
+	publisher =    {PMLR},
+	pdf = 	 {https://raw.githubusercontent.com/mlresearch/v305/main/assets/schwarke25a/schwarke25a.pdf},
+	url = 	 {https://proceedings.mlr.press/v305/schwarke25a.html},
+	abstract = 	 {Differentiable simulators promise to improve sample efficiency in robot learning by providing analytic gradients of the system dynamics. Yet, their application to contact-rich tasks like locomotion is complicated by the inherently non-smooth nature of contact, impeding effective gradient-based optimization. Existing works thus often rely on soft contact models that provide smooth gradients but lack physical accuracy, constraining results to simulation. To address this limitation, we propose a differentiable contact model designed to provide informative gradients while maintaining high physical fidelity. We demonstrate the efficacy of our approach by training a quadrupedal locomotion policy within our differentiable simulator leveraging analytic gradients and successfully transferring the learned policy zero-shot to the real world. To the best of our knowledge, this represents the first successful sim-to-real transfer of a legged locomotion policy learned entirely within a differentiable simulator, establishing the feasibility of using differentiable simulation for real-world locomotion control.},
+	doi          = {10.48550/arXiv.2404.02887}
+}
+
+@article{kondo2026sando,
+	title={{SANDO}: Safe Autonomous Trajectory Planning for Dynamic Unknown Environments},
+	author={Kondo, Kota and Tordesillas, Jesus and How, Jonathan P},
+	journal={arXiv preprint arXiv:2604.07599},
+	year={2026},
+	abstract     = {SANDO is a safe trajectory planner for 3D dynamic unknown environments, where obstacle
+		locations and motions are unknown a priori and a collision-free plan can become unsafe at
+		any moment, requiring fast replanning. Existing soft-constraint planners are fast but cannot
+		guarantee collision-free paths, while hard-constraint methods ensure safety at the cost of
+		longer computation. SANDO addresses this trade-off through three contributions. First, a
+		heat map-based A* global planner steers paths away from high-risk regions using soft costs,
+		and a spatiotemporal safe flight corridor (STSFC) generator produces time-layered polytopes
+		that inflate obstacles only by their worst-case reachable set at each time layer, rather
+		than by the worst case over the entire horizon. Second, trajectory optimization is
+		formulated as a Mixed-Integer Quadratic Program (MIQP) with hard collision-avoidance
+		constraints, and a variable elimination technique reduces the number of decision variables,
+		enabling fast computation. Third, a formal safety analysis establishes collision-free
+		guarantees under explicit velocity-bound and estimation-error assumptions. Ablation studies
+		show that variable elimination yields up to 7.4x speedup in optimization time, and that
+		STSFCs are critical for feasibility in dense dynamic environments. Benchmark simulations
+		against state-of-the-art methods across standardized static benchmarks, obstacle-rich static
+		forests, and dynamic environments show that SANDO consistently achieves the highest success
+		rate with no constraint violations across all difficulty levels; perception-only experiments
+		without ground truth obstacle information confirm robust performance under realistic
+		sensing. Hardware experiments on a UAV with fully onboard planning, perception, and
+		localization demonstrate six safe flights in static environments and ten safe flights among
+		dynamic obstacles.},
+	doi          = {10.48550/arXiv.2604.07599}
+}
+
+@inproceedings{tordesillas2016modelo,
+	title={Modelo cinem{\'a}tico de un robot hex{\'a}podo con C-legs},
+	author={Tordesillas, Jesus and de Le{\'o}n Rivas, Jorge and del Cerro Giner, Jaime and Barrientos Cruz, Antonio},
+	booktitle={Actas de las XXXVII Jornadas de Autom{\'a}tica: Madrid. 7, 8 y 9 de septiembre de 2016},
+	pages={352--359},
+	year={2016},
+	organization={Comit{\'e} Espa{\~n}ol de Autom{\'a}tica},
+	doi          = {10.17979/spudc.9788497498081.0352}
+}
+
+@article{talbot2024continuous,
+  title={Continuous-time state estimation methods in robotics: A survey},
+  author={Talbot, William and Nubert, Julian and Tuna, Turcan and Cadena, Cesar and D{\"u}mbgen, Frederike and Tordesillas, Jesus and Barfoot, Timothy D and Hutter, Marco},
+	year         = 2025,
+journal      = {IEEE Transactions on Robotics},
+publisher    = {IEEE},
+	abstract     = {Accurate, efficient, and robust state estimation is more important than ever in robotics as
+		the variety of platforms and complexity of tasks continue to grow. Historically,
+		discrete-time filters and smoothers have been the dominant approach, in which the estimated
+		variables are states at discrete sample times. The paradigm of continuous-time state
+		estimation proposes an alternative strategy by estimating variables that express the state
+		as a continuous function of time, which can be evaluated at any query time. Not only can
+		this benefit downstream tasks such as planning and control, but it also significantly
+		increases estimator performance and flexibility, as well as reduces sensor preprocessing and
+		interfacing complexity. Despite this, continuous-time methods remain underutilized,
+		potentially because they are less well-known within robotics. To remedy this, this work
+		presents a unifying formulation of these methods and the most exhaustive literature review
+		to date, systematically categorizing prior work by methodology, application, state
+		variables, historical context, and theoretical contribution to the field. By surveying
+		splines and Gaussian processes together and contextualizing works from other research
+		domains, this work identifies and analyzes open problems in continuous-time state estimation
+		and suggests new research directions.},
+	doi          = {10.1109/TRO.2025.3593079}
+}
+
+@inproceedings{kondo2024primer,
+  title={PRIMER: Perception-Aware Robust Learning-based Multiagent Trajectory Planner},
+  author={Kondo, Kota and Tewari, Claudius T and Tagliabue, Andrea and Tordesillas, Jesus and Lusk, Parker C and Peterson, Mason B and How, Jonathan P},
+	year         = 2025,
+booktitle    = {2025 IEEE International Conference on Robotics and Automation (ICRA)},
+organization = {IEEE},
+	abstract     = {In decentralized multiagent trajectory planners, agents need to communicate and exchange
+		their positions to generate collision-free trajectories. However, due to localization
+		errors/uncertainties, trajectory deconfliction can fail even if trajectories are perfectly
+		shared between agents. To address this issue, we first present PARM and PARM*,
+		perception-aware, decentralized, asynchronous multiagent trajectory planners that enable a
+		team of agents to navigate uncertain environments while deconflicting trajectories and
+		avoiding obstacles using perception information. PARM* differs from PARM as it is less
+		conservative, using more computation to find closer-to-optimal solutions. While these
+		methods achieve state-of-the-art performance, they suffer from high computational costs as
+		they need to solve large optimization problems onboard, making it difficult for agents to
+		replan at high rates. To overcome this challenge, we present our second key contribution,
+		PRIMER, a learning-based planner trained with imitation learning (IL) using PARM* as the
+		expert demonstrator. PRIMER leverages the low computational requirements at deployment of
+		neural networks and achieves a computation speed up to 5500 times faster than
+		optimization-based approaches.},
+	doi          = {10.1109/ICRA55743.2025.11128011}
+}
+
+@inproceedings{andreu2025foci,
+  title={FOCI: Trajectory Optimization on Gaussian Splats},
+  author={Gomez Andreu, Mario and Wilder-Smith, Maximum and Klemm, Victor and Patil, Vaishakh and Tordesillas, Jesus and Hutter, Marco},
+	year         = 2025,
+booktitle    = {2025 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+organization = {IEEE},
+	abstract     = {3D Gaussian Splatting (3DGS) has recently gained popularity as a faster alternative to
+		Neural Radiance Fields (NeRFs) in 3D reconstruction and view synthesis methods. Leveraging
+		the spatial information encoded in 3DGS, this work proposes FOCI (Field Overlap Collision
+		Integral), an algorithm that is able to optimize trajectories directly on the Gaussians
+		themselves. FOCI leverages a novel and interpretable collision formulation for 3DGS using
+		the notion of the overlap integral between Gaussians. Contrary to other approaches, which
+		represent the robot with conservative bounding boxes that underestimate the traversability
+		of the environment, we propose to represent the environment and the robot as Gaussian
+		Splats. This not only has desirable computational properties, but also allows for
+		orientation-aware planning, allowing the robot to pass through very tight and narrow spaces.
+		We extensively test our algorithm in both synthetic and real Gaussian Splats, showcasing
+		that collision-free trajectories for the ANYmal legged robot that can be computed in a few
+		seconds, even with hundreds of thousands of Gaussians making up the environment. The project
+		page and code are available at https://rffr.leggedrobotics.com/works/foci/},
+	doi          = {10.1109/IROS60139.2025.11245845}
+}
+
+@article{tordesillas2020mader,
+	title        = {{MADER}: Trajectory Planner in Multiagent and Dynamic Environments},
+	author       = {Tordesillas, Jesus and How, Jonathan P},
+	year         = 2021,
+	journal      = {IEEE Transactions on Robotics},
+	publisher    = {IEEE},
+	abstract     = {This paper presents MADER, a 3D decentralized and asynchronous trajectory planner for UAVs
+		that generates collision-free trajectories in environments with static obstacles, dynamic
+		obstacles, and other planning agents. Real-time collision avoidance with other dynamic
+		obstacles or agents is done by performing outer polyhedral representations of every interval
+		of the trajectories and then including the plane that separates each pair of polyhedra as a
+		decision variable in the optimization problem. MADER uses our recently developed MINVO basis
+		to obtain outer polyhedral representations with volumes 2.36 and 254.9 times, respectively,
+		smaller than the Bernstein or B-Spline bases used extensively in the planning literature.
+		Our decentralized and asynchronous algorithm guarantees safety with respect to other agents
+		by including their committed trajectories as constraints in the optimization and then
+		executing a collision check-recheck scheme. Finally, extensive simulations in challenging
+		cluttered environments show up to a 33.9\% reduction in the flight time, and a 88.8\%
+		reduction in the number of stops compared to the Bernstein and B-Spline bases, shorter
+		flight distances than centralized approaches, and shorter total times on average than
+		synchronous decentralized approaches.},
+	doi          = {10.1109/TRO.2021.3080235}
+}
+
+@article{tordesillas2022deeppanther,
+	title        = {{Deep-PANTHER}: Learning-based perception-aware trajectory planner in dynamic environments},
+	author       = {Tordesillas, Jesus and How, Jonathan P},
+	year         = 2023,
+	journal      = {IEEE Robotics and Automation Letters},
+	publisher    = {IEEE},
+	abstract     = {This paper presents Deep-PANTHER, a learning-based perception-aware trajectory planner for
+		unmanned aerial vehicles (UAVs) in dynamic environments. Given the current state of the UAV,
+		and the predicted trajectory and size of the obstacle, Deep-PANTHER generates multiple
+		trajectories to avoid a dynamic obstacle while simultaneously maximizing its presence in the
+		field of view (FOV) of the onboard camera. To obtain a computationally tractable real-time
+		solution, imitation learning is leveraged to train a Deep-PANTHER policy using
+		demonstrations provided by a multimodal optimization-based expert. Extensive simulations
+		show replanning times that are two orders of magnitude faster than the optimization-based
+		expert, while achieving a similar cost. By ensuring that each expert trajectory is assigned
+		to one distinct student trajectory in the loss function, Deep-PANTHER can also capture the
+		multimodality of the problem and achieve a mean squared error (MSE) loss with respect to the
+		expert that is up to 18 times smaller than state-of-the-art (Relaxed) Winner-Takes-All
+		approaches. Deep-PANTHER is also shown to generalize well to obstacle trajectories that
+		differ from the ones used in training.},
+	doi          = {10.1109/LRA.2023.3235678}
+}
+
+@article{tordesillas2021panther,
+	title        = {{PANTHER}: Perception-aware trajectory planner in dynamic environments},
+	author       = {Tordesillas, Jesus and How, Jonathan P},
+	year         = 2022,
+	journal      = {IEEE Access},
+	publisher    = {IEEE},
+	volume       = 10,
+	pages        = {22662--22677},
+	abstract     = {This paper presents PANTHER, a real-time perception-aware (PA) trajectory planner for
+		multirotor-UAVs (Unmanned Aerial Vehicles) in dynamic environments. PANTHER plans
+		trajectories that avoid dynamic obstacles while also keeping them in the sensor field of
+		view (FOV) and minimizing the blur to aid in object tracking. The rotation and translation
+		of the UAV are jointly optimized, which allows PANTHER to fully exploit the differential
+		flatness of multirotors to maximize the PA objective. Real-time performance is achieved by
+		implicitly imposing the underactuated dynamics of the UAV through the Hopf fibration.
+		PANTHER is able to keep the obstacles inside the FOV 7.9 and 1.5 times more than non-PA
+		approaches and PA approaches that decouple translation and yaw, respectively. The projected
+		velocity (and hence the blur) is reduced by 18\% and 34\%, respectively. This leads to
+		average success rates three times larger than state-of-the-art approaches in multi-obstacle
+		avoidance scenarios. The MINVO basis is used to impose low-conservative collision avoidance
+		constraints in position and velocity space. Finally, extensive hardware experiments in
+		unknown dynamic environments with all the computation running onboard are presented, with
+		velocities of up to 5.8 m/s, and with relative velocities (with respect to the obstacles) of
+		up to 6.3 m/s. The only sensors used are an IMU, a forward-facing depth camera, and a
+		downward-facing monocular camera.},
+	doi          = {10.1109/ACCESS.2022.3154037}
+}
+
+@article{agha2021nebula,
+	title        = {NeBula: TEAM CoSTAR's Robotic Autonomy Solution that Won Phase II of DARPA Subterranean Challenge},
+	author       = {Agha, Ali and Otsu, Kyohei and Morrell, Benjamin and Fan, David D and Thakker, Rohan  and ... and Tordesillas, Jesus and ... and others},
+	year         = 2022,
+	journal      = {Field Robotics},
+	volume       = 2,
+	pages        = {1432--1506},
+	abstract     = {This paper presents and discusses algorithms, hardware, and software architecture developed
+		by the TEAM CoSTAR (Collaborative SubTerranean Autonomous Robots), competing in the DARPA
+		Subterranean Challenge. Specifically, it presents the techniques utilized within the Tunnel
+		(2019) and Urban (2020) competitions, where CoSTAR achieved 2nd and 1st place, respectively.
+		We also discuss CoSTAR's demonstrations in Martian-analog surface and subsurface (lava
+		tubes) exploration. The paper introduces our autonomy solution, referred to as NeBula
+		(Networked Belief-aware Perceptual Autonomy). NeBula is an uncertainty-aware framework that
+		aims at enabling resilient and modular autonomy solutions by performing reasoning and
+		decision making in the belief space (space of probability distributions over the robot and
+		world states). We discuss various components of the NeBula framework, including: (i)
+		geometric and semantic environment mapping; (ii) a multi-modal positioning system; (iii)
+		traversability analysis and local planning; (iv) global motion planning and exploration
+		behavior; (i) risk-aware mission planning; (vi) networking and decentralized reasoning; and
+		(vii) learning-enabled adaptation. We discuss the performance of NeBula on several robot
+		types (e.g. wheeled, legged, flying), in various environments. We discuss the specific
+		results and lessons learned from fielding this solution in the challenging courses of the
+		DARPA Subterranean Challenge competition.},
+	doi          = {10.55417/fr.2022047},
+	realauthorpos = 29,
+	realnumauthors = 72
+}
+
+@inproceedings{tordesillas2019faster,
+	title        = {{FASTER}: Fast and Safe Trajectory Planner for Flights in Unknown Environments},
+	author       = {Tordesillas, Jesus and Lopez, Brett T and How, Jonathan P},
+	year         = 2019,
+	booktitle    = {2019 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+	organization = {IEEE},
+	abstract     = {High-speed trajectory planning through unknown environments requires algorithmic techniques
+		that enable fast reaction times while maintaining safety as new information about the
+		operating environment is obtained. The requirement of computational tractability typically
+		leads to optimization problems that do not include the obstacle constraints (collision
+		checks are done on the solutions) or use a convex decomposition of the free space and then
+		impose an ad-hoc time allocation scheme for each interval of the trajectory. Moreover,
+		safety guarantees are usually obtained by having a local planner that plans a trajectory
+		with a final "stop" condition in the free-known space. However, these two decisions
+		typically lead to slow and conservative trajectories. We propose FASTER (Fast and Safe
+		Trajectory Planner) to overcome these issues. FASTER obtains high-speed trajectories by
+		enabling the local planner to optimize in both the free-known and unknown spaces. Safety
+		guarantees are ensured by always having a feasible, safe back-up trajectory in the
+		free-known space at the start of each replanning step. Furthermore, we present a Mixed
+		Integer Quadratic Program formulation in which the solver can choose the trajectory interval
+		allocation, and where a time allocation heuristic is computed efficiently using the result
+		of the previous replanning iteration. This proposed algorithm is tested extensively both in
+		simulation and in real hardware, showing agile flights in unknown cluttered environments
+		with velocities up to 3.6 m/s.},
+	doi          = {10.1109/IROS40897.2019.8968021}
+}
+
+@article{tordesillas2020faster,
+	title={{FASTER}: Fast and safe trajectory planner for navigation in unknown environments},
+	author={Tordesillas, Jesus and Lopez, Brett T and Everett, Michael and How, Jonathan P},
+	journal={IEEE Transactions on Robotics},
+	volume={38},
+	number={2},
+	pages={922--938},
+	year={2021},
+	publisher={IEEE},
+	abstract     = {Planning high-speed trajectories for UAVs in unknown environments requires algorithmic
+		techniques that enable fast reaction times to guarantee safety as more information about the
+		environment becomes available. The standard approaches that ensure safety by enforcing a
+		"stop" condition in the free-known space can severely limit the speed of the vehicle,
+		especially in situations where much of the world is unknown. Moreover, the ad-hoc time and
+		interval allocation scheme usually imposed on the trajectory also leads to conservative and
+		slower trajectories. This work proposes FASTER (Fast and Safe Trajectory Planner) to ensure
+		safety without sacrificing speed. FASTER obtains high-speed trajectories by enabling the
+		local planner to optimize in both the free-known and unknown spaces. Safety is ensured by
+		always having a safe back-up trajectory in the free-known space. The MIQP formulation
+		proposed also allows the solver to choose the trajectory interval allocation. FASTER is
+		tested extensively in simulation and in real hardware, showing flights in unknown cluttered
+		environments with velocities up to 7.8m/s, and experiments at the maximum speed of a
+		skid-steer ground robot (2m/s).},
+	doi          = {10.1109/TRO.2021.3100142}
+}
+
+@article{tordesillas2020minvo,
+	title        = {{MINVO} Basis: Finding Simplexes with Minimum Volume Enclosing Polynomial Curves},
+	author       = {Tordesillas, Jesus and How, Jonathan P},
+	year         = 2022,
+	journal      = {Computer-Aided Design},
+	publisher    = {Elsevier},
+	volume       = 151,
+	pages        = 103341,
+	abstract     = {This paper studies the polynomial basis that generates the smallest $n$-simplex enclosing a
+		given $n^{\text{th}}$-degree polynomial curve in $\mathbb{R}^n$. Although the Bernstein and
+		B-Spline polynomial bases provide feasible solutions to this problem, the simplexes obtained
+		by these bases are not the smallest possible, which leads to overly conservative results in
+		many CAD (computer-aided design) applications. We first prove that the polynomial basis that
+		solves this problem (MINVO basis) also solves for the $n^\text{th}$-degree polynomial curve
+		with largest convex hull enclosed in a given $n$-simplex. Then, we present a formulation
+		that is independent of the $n$-simplex or $n^{\text{th}}$-degree polynomial curve given. By
+		using Sum-Of-Squares (SOS) programming, branch and bound, and moment relaxations, we obtain
+		high-quality feasible solutions for any $n\in\mathbb{N}$, and prove (numerical) global
+		optimality for $n=1,2,3$ and (numerical) local optimality for $n=4$. The results obtained
+		for $n=3$ show that, for any given $3^{\text{rd}}$-degree polynomial curve in
+		$\mathbb{R}^3$, the MINVO basis is able to obtain an enclosing simplex whose volume is
+		$2.36$ and $254.9$ times smaller than the ones obtained by the Bernstein and B-Spline bases,
+		respectively. When $n=7$, these ratios increase to $902.7$ and $2.997\cdot10^{21}$,
+		respectively.},
+	doi          = {10.1016/j.cad.2022.103341}
+}
+
+@inproceedings{alatur2020autonomous,
+	title        = {Autonomous Off-road Navigation over Extreme Terrains with Perceptually-challenging Conditions.},
+	author       = {Thakker, Rohan and Alatur, Nikhilesh and Fan, David D. and Tordesillas, Jesus and  Paton, Michael and Otsu, Kyohei and Toupet, Olivier and Agha-mohammadi, Ali-akbar},
+	year         = 2020,
+	booktitle    = {ISER},
+	abstract     = {We propose a framework for resilient autonomous navigation in perceptually challenging
+		unknown environments with mobility-stressing elements such as uneven surfaces with rocks and
+		boulders, steep slopes, negative obstacles like cliffs and holes, and narrow passages.
+		Environments are GPS-denied and perceptually-degraded with variable lighting from dark to
+		lit and obscurants (dust, fog, smoke). Lack of prior maps and degraded communication
+		eliminates the possibility of prior or off-board computation or operator intervention. This
+		necessitates real-time on-board computation using noisy sensor data. To address these
+		challenges, we propose a resilient architecture that exploits redundancy and heterogeneity
+		in sensing modalities. Further resilience is achieved by triggering recovery behaviors upon
+		failure. We propose a fast settling algorithm to generate robust multi-fidelity
+		traversability estimates in real-time. The proposed approach was deployed on multiple
+		physical systems including skid-steer and tracked robots, a high-speed RC car and legged
+		robots, as a part of Team CoSTAR's effort to the DARPA Subterranean Challenge, where the
+		team won 2nd and 1st place in the Tunnel and Urban Circuits, respectively.},
+	doi          = {10.1007/978-3-030-71151-1_15}
+}
+
+@article{andrea2020lion,
+	title        = {LION: Lidar-Inertial Observability-Aware Navigator for Vision-Denied Environments.},
+	author       = {Tagliabue, Andrea and Tordesillas, Jesus and Cai, Xiaoyi and Santamaria-Navarro, Angel and  How, Jonathan P. and Carlone, Luca and  Agha-Mohammadi, Ali-akbar},
+	year         = 2020,
+	journal      = {International Symposium on Experimental Robotics},
+	volume       = {},
+	number       = {},
+	pages        = {},
+	abstract     = {State estimation for robots navigating in GPS-denied and perceptually-degraded environments,
+		such as underground tunnels, mines and planetary subsurface voids, remains challenging in
+		robotics. Towards this goal, we present LION (Lidar-Inertial Observability-Aware Navigator),
+		which is part of the state estimation framework developed by the team CoSTAR for the DARPA
+		Subterranean Challenge, where the team achieved second and first places in the Tunnel and
+		Urban circuits in August 2019 and February 2020, respectively. LION provides high-rate
+		odometry estimates by fusing high-frequency inertial data from an IMU and low-rate relative
+		pose estimates from a lidar via a fixed-lag sliding window smoother. LION does not require
+		knowledge of relative positioning between lidar and IMU, as the extrinsic calibration is
+		estimated online. In addition, LION is able to self-assess its performance using an
+		observability metric that evaluates whether the pose estimate is geometrically
+		ill-constrained. Odometry and confidence estimates are used by HeRO, a supervisory algorithm
+		that provides robust estimates by switching between different odometry sources. In this
+		paper we benchmark the performance of LION in perceptually-degraded subterranean
+		environments, demonstrating its high technology readiness level for deployment in the field.},
+	doi          = {10.1007/978-3-030-71151-1_34}
+}
+
+@inproceedings{tordesillas2019real,
+	title        = {Real-time planning with multi-fidelity models for agile flights in unknown environments},
+	author       = {Tordesillas, Jesus and Lopez, Brett T and Carter, John and Ware, John and How, Jonathan P},
+	year         = 2019,
+	booktitle    = {2019 International Conference on Robotics and Automation (ICRA)},
+	pages        = {725--731},
+	organization = {IEEE},
+	abstract     = {Autonomous navigation through unknown environments is a challenging task that entails
+		real-time localization, perception, planning, and control. UAVs with this capability have
+		begun to emerge in the literature with advances in lightweight sensing and computing.
+		Although the planning methodologies vary from platform to platform, many algorithms adopt a
+		hierarchical planning architecture where a slow, low-fidelity global planner guides a fast,
+		high-fidelity local planner. However, in unknown environments, this approach can lead to
+		erratic or unstable behavior due to the interaction between the global planner, whose
+		solution is changing constantly, and the local planner; a consequence of not capturing
+		higher-order dynamics in the global plan. This work proposes a planning framework in which
+		multi-fidelity models are used to reduce the discrepancy between the local and global
+		planner. Our approach uses high-, medium-, and low-fidelity models to compose a path that
+		captures higher-order dynamics while remaining computationally tractable. In addition, we
+		address the interaction between a fast planner and a slower mapper by considering the sensor
+		data not yet fused into the map during the collision check. This novel mapping and planning
+		framework for agile flights is validated in simulation and hardware experiments, showing
+		replanning times of 5-40 ms in cluttered environments.},
+	doi          = {10.1109/ICRA.2019.8794248}
+}
+
+@article{tordesillas2023rayen,
+	title        = {{RAYEN}: Imposition of hard convex constraints on neural networks},
+	author       = {Tordesillas, Jesus and How, Jonathan P and Hutter, Marco},
+	year         = 2023,
+	journal      = {arXiv preprint arXiv:2307.08336},
+	abstract     = {Despite the numerous applications of convex constraints in Robotics, enforcing them within
+		learning-based frameworks remains an open challenge. Existing techniques either fail to
+		guarantee satisfaction at all times, or incur prohibitive computational costs. This paper
+		presents RAYEN, a framework for imposing hard convex constraints on the output or latent
+		variables of a neural network. RAYEN guarantees constraint satisfaction during both training
+		and testing, for any input and any network weights. Unlike prior approaches, RAYEN avoids
+		computationally expensive orthogonal projections, soft constraints, conservative
+		approximations of the feasible set, and slow iterative corrections. RAYEN supports any
+		combination of linear, convex quadratic, second-order cone (SOC), and linear matrix
+		inequality (LMI) constraints, with negligible overhead compared to unconstrained networks.
+		For instance, it imposes 1K quadratic constraints on a 1K-dimensional variable with only 8
+		ms of overhead compared to a network that does not enforce these constraints. An LMI
+		constraint with 300x300 dense matrices on a 10K-dimensional variable can be guaranteed with
+		only 12 ms additional overhead. When used in neural networks that approximate the solution
+		of constrained trajectory optimization problems, RAYEN runs 20 to 7468 times faster than
+		state-of-the-art algorithms, while guaranteeing constraint satisfaction at all times and
+		achieving a near-optimal cost (<1.5\% optimality gap). Finally, we demonstrate RAYEN's
+		ability to enforce actuator constraints on a learned locomotion policy by validating
+		constraint satisfaction in both simulation and real-world experiments on a quadruped robot.
+		The code is available at https://github.com/leggedrobotics/rayen},
+	doi          = {10.48550/arXiv.2307.08336}
+}
+
+@inproceedings{kondo2023robust,
+	title        = {Robust {MADER}: Decentralized and asynchronous multiagent trajectory planner robust to communication delay},
+	author       = {Kondo, Kota and Tordesillas, Jesus and Figueroa, Reinaldo and Rached, Juan and Merkel, Joseph and Lusk, Parker C and How, Jonathan P},
+	year         = 2023,
+	booktitle    = {2023 IEEE International Conference on Robotics and Automation (ICRA)},
+	pages        = {1687--1693},
+	organization = {IEEE},
+	abstract     = {Although communication delays can disrupt multiagent systems, most of the existing
+		multiagent trajectory planners lack a strategy to address this issue. State-of-the-art
+		approaches typically assume perfect communication environments, which is hardly realistic in
+		real-world experiments. This paper presents Robust MADER (RMADER), a decentralized and
+		asynchronous multiagent trajectory planner that can handle communication delays among
+		agents. By broadcasting both the newly optimized trajectory and the committed trajectory,
+		and by performing a delay check step, RMADER is able to guarantee safety even under
+		communication delay. RMADER was validated through extensive simulation and hardware flight
+		experiments and achieved a 100\% success rate of collision-free trajectory generation,
+		outperforming state-of-the-art approaches.},
+	doi          = {10.1109/ICRA48891.2023.10161244}
+}
+
+@article{kondo2023robustRAL,
+	title        = {Robust {MADER}: Decentralized Multiagent Trajectory Planner Robust to Communication Delay in Dynamic Environments},
+	author       = {Kondo, Kota and Figueroa, Reinaldo and Rached, Juan and Tordesillas, Jesus and Lusk, Parker C. and How, Jonathan P.},
+	year         = 2023,
+	journal      = {IEEE Robotics and Automation Letters},
+	volume       = {},
+	number       = {},
+	pages        = {1--8},
+	abstract     = {Communication delays can be catastrophic for multiagent systems. However, most existing
+		state-of-the-art multiagent trajectory planners assume perfect communication and therefore
+		lack a strategy to rectify this issue in real-world environments. To address this challenge,
+		we propose Robust MADER (RMADER), a decentralized, asynchronous multiagent trajectory
+		planner robust to communication delay. RMADER ensures safety by introducing (1) a Delay
+		Check step, (2) a two-step trajectory publication scheme, and (3) a novel
+		trajectory-storing-and-checking approach. Our primary contributions include: proving
+		recursive feasibility for collision-free trajectory generation in asynchronous decentralized
+		trajectory-sharing, simulation benchmark studies, and hardware experiments with different
+		network topologies and dynamic obstacles. We show that RMADER outperforms existing
+		approaches by achieving a 100\% success rate of collision-free trajectory generation,
+		whereas the next best asynchronous decentralized method only achieves 83\% success.},
+	doi          = {10.1109/LRA.2023.3342561}
+}
+
+@article{carrio2020onboard,
+	title        = {Onboard Detection and Localization of Drones Using Depth Maps},
+	author       = {Carrio, Adrian and Tordesillas, Jesus and Vemprala, Sai and Saripalli, Srikanth and Campoy, Pascual and How, Jonathan P},
+	year         = 2020,
+	journal      = {IEEE Access},
+	publisher    = {IEEE},
+	volume       = 8,
+	pages        = {30480--30490},
+	abstract     = {Obstacle avoidance is a key feature for safe drone navigation. While solutions are already
+		commercially available for static obstacle avoidance, systems enabling avoidance of dynamic
+		objects, such as drones, are much harder to develop due to the efficient perception,
+		planning and control capabilities required, particularly in small drones with constrained
+		takeoff weights. For reasonable performance, obstacle detection systems should be capable of
+		running in real-time, with sufficient field-of-view (FOV) and detection range, and ideally
+		providing relative position estimates of potential obstacles. In this work, we achieve all
+		of these requirements by proposing a novel strategy to perform onboard drone detection and
+		localization using depth maps. We integrate it on a small quadrotor, thoroughly evaluate its
+		performance through several flight experiments, and demonstrate its capability to
+		simultaneously detect and localize drones of different sizes and shapes. In particular, our
+		stereo-based approach runs onboard a small drone at 16 Hz, detecting drones at a maximum
+		distance of 8 meters, with a maximum error of 10\% of the distance and at relative speeds up
+		to 2.3 m/s. The approach is directly applicable to other 3D sensing technologies with higher
+		range and accuracy, such as 3D LIDAR.},
+	doi          = {10.1109/ACCESS.2020.2971938}
+}
+
+@mastersthesis{tordesillas2019trajectory,
+	title={Trajectory planner for agile flights in unknown environments},
+	author={Tordesillas, Jesus},
+	year={2019},
+	school={Massachusetts Institute of Technology},
+	url={https://dspace.mit.edu/handle/1721.1/122420},
+	abstract     = {Planning high-speed trajectories for UAVs in unknown environments requires extremely fast
+		algorithms able to solve the trajectory generation problem in real-time in order to be able
+		to react quickly to the changing knowledge of the world and that guarantee safety at all
+		times. In this thesis, we first show the computational intractability of solving the
+		planning problem by using the full nonlinear dynamics of the UAV in a complex cluttered
+		known environment. By making use of the differential flatness of the UAV and removing the
+		assumption of a completely known world, we then use a convex decomposition of the space and
+		reformulate the optimization problem of the local planner as a Mixed Integer Quadratic
+		Program (MIQP). The formulation proposed enables the solver to choose the interval
+		allocation (i.e. which interval of the trajectory belongs to which polytope), and the time
+		allocation is computed efficiently using the results of the previous replanning iteration.
+		We also address the erratic or unstable behavior that usually appears when a hierarchical
+		planning architecture (a slow, low-fidelity global planner guiding a fast, high-fidelity
+		local planner) is adopted. This is a consequence of not capturing higher-order dynamics in
+		the global planner, whose solution is changing constantly. We therefore propose a way to
+		address this interaction, taking into account the dynamics of the UAV to reduce the
+		discrepancy between the local and global planner. Moreover, safety guarantees are usually
+		obtained by having a local planner that plans a trajectory with a final "stop" condition in
+		the free-known space. However, this decision typically leads to slow and conservative
+		trajectories. We propose a way to obtain faster trajectories by enabling the local planner
+		to optimize in both free-known and unknown spaces. Safety guarantees are ensured by always
+		having a feasible, safe back-up trajectory in the free-known space at the start of each
+		replanning step. The planning framework proposed (called FASTER - FAst and Safe Trajectory
+		PlannER) is validated extensively in simulation and hardware experiments, showing replanning
+		times of 20-65 ms in cluttered environments, with vehicle's speeds up to 7.8 m/s.}
+}
+
+@phdthesis{torres2022trajectory,
+	title={Trajectory Planning for Flights in Multiagent and Dynamic Environments},
+	author={Tordesillas, Jesus},
+	year={2022},
+	school={Massachusetts Institute of Technology},
+	url={https://dspace.mit.edu/handle/1721.1/147446},
+	abstract     = {While efficient and fast trajectory planners in static worlds have been extensively proposed
+		for UAVs (Unmanned Aerial Vehicles), a 3D real-time planner for environments with static
+		obstacles, dynamic obstacles, and other planning agents still remains an open problem. The
+		dynamic nature of these environments demands high replanning rates, making this problem
+		especially hard on computationally limited platforms. Existing state-of-the-art planners
+		reduce the computational complexity at the expense of more conservative results by relying
+		on three main simplifications or assumptions: First, the collision avoidance constraints are
+		imposed using the Bernstein and B-Spline polynomial bases, which do not tightly enclose a
+		given interval of a polynomial trajectory. Second, multiagent planners usually make
+		centralized and/or synchronized computation assumptions, which lead to poor scalability with
+		the number of agents or can degrade the overall performance. Finally, position and yaw are
+		decoupled when optimizing perception-aware trajectories, which produces highly conservative
+		results. This thesis addresses the aforementioned limitations with the following
+		contributions: First, it presents the MINVO basis, a polynomial basis that generates the
+		simplex with minimum volume enclosing a polynomial curve, therefore reducing the
+		conservativeness in the obstacle avoidance constraints. Leveraging the MINVO basis, this
+		thesis then proposes a tractable way to avoid dynamic obstacles by imposing linear
+		separability constraints between the polyhedral enclosures of the intervals of the
+		trajectories. This is then extended to multiagent scenarios, and a decentralized and
+		asynchronous obstacle avoidance algorithm among many replanning agents is presented.
+		Real-time perception-aware planning is achieved by implicitly imposing the underactuated
+		dynamics of the UAV through the Hopf fibration while jointly optimizing the full pose.
+		Finally, a reduction of two orders of magnitude in the computation time is obtained by
+		learning a policy that imitates the optimization-based planner. These proposed contributions
+		are extensively evaluated in simulation, showing up to 32 agents planning in real time, and
+		in real-world experiments, showcasing flights up to 5.8 m/s in unknown dynamic environments
+		with only onboard computation.}
+}
+
+@techreport{luskjtorde2019,
+	title = {{Trajectory Optimization for Multirotors}},
+	author = {Lusk, Parker and Tordesillas, Jesus},
+	year = {2019},
+	url = {https://github.com/jtorde/uav_trajectory_optimizer_gurobi},
+	institution = {Aerospace Controls Lab},
+	month = {05}
+}
+
+@techreport{jtordeadaptive2019,
+	title = {{Parameter Estimation and Dynamic Extension for a Quadrotor}},
+	author = {Tordesillas, Jesus},
+	year = {2019},
+	url = {https://github.com/jtorde/uav_adaptive_control},
+	institution = {Aerospace Controls Lab},
+	month = {05}
+}

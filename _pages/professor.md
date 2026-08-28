@@ -1,24 +1,28 @@
 ---
 author_profile: true
-title: "![](/assets/images/foto_mia2.svg)" #  Jesus Tordesillas Torres
+# The <h1> is the portrait, which is why it needs alt text -- without it this
+# page had no heading text at all, and the theme derived an empty <title> from
+# it ("<title> - Jesus Tordesillas Torres</title>" was live). seo_title below
+# now supplies the title tag; the page looks exactly the same.
+title: "![Jesus Tordesillas Torres](/assets/images/foto_mia2.webp)"
+seo_title: "Jesus Tordesillas Torres \u2014 Assistant Professor, Comillas-ICAI"
+description: "Jesus Tordesillas Torres, Assistant Professor at Comillas-ICAI and PI
+  of the TRAIL robotics lab. Previously postdoc at ETH Zurich and MIT, PhD at MIT."
+og_type: profile
 layout: splash
 
 permalink: /jtorde/
-date: 2016-03-23T11:48:41-04:00
+# `date` removed for the same reason as on the homepage -- see index.html.
 header:
   overlay_color: "#000"
   overlay_filter: "0.0"
-  overlay_image: /assets/images/mine1_compressed.jpg
+  overlay_image: /assets/images/mine1_compressed.webp
 excerpt: "**Jesus Tordesillas Torres**<br/> Assistant Professor at Comillas-ICAI <br/>"
 
 
-logos:
-  - excerpt: "
-  ![](/assets/images/comillas.png){: .align-left} ![](/assets/images/eth.svg){: .align-left} ![](/assets/images/mit.svg){: .align-left}  ![](/assets/images/nasa.svg){: .align-left}  ![](/assets/images/etsii.svg){: .align-left}"
-
 life:
 
-  - excerpt: "**EDUCATION**  ([Download Resume](https://www.dropbox.com/sh/hpoocazyuadugex/AAAT2Kp-mVMGfSTispjnREH1a?dl=0)) 
+  - excerpt: "**BIO**  
   
     * Assistant Professor at [Comillas-ICAI](https://www.comillas.edu/en/icai/) (June'24-Present)
 
@@ -39,8 +43,8 @@ life:
 
 
 ---
-{% include feature_row id="logos" type="justified" %}
-{% include feature_row id="mylinks" type="justified" %}
+{% include logo-strip.html %}
+{% include links-row.html %}
 {% include feature_row id="life" type="justified" %}
 {% include feature_row id="publicationstitle" type="justified" %}
-{% include feature_row id="publications" %}
+{% include publication-row.html filters=true %}

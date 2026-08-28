@@ -13,7 +13,10 @@ group :jekyll_plugins do
   gem "jekyll-feed"
   gem "jemoji"
   gem "jekyll-include-cache"
-  gem "jekyll-algolia"
+  # gem "jekyll-algolia"   # was declared here but never enabled in _config.yml,
+  #                        # and it needs an API key plus an index-build step.
+  gem "jekyll-remote-theme"  # needed for `bundle exec jekyll serve` locally,
+                             # since the theme is fetched at build time.
 end
 
 gem "webrick", "~> 1.7"
