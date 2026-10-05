@@ -73,7 +73,7 @@
   image_width: 414
   image_height: 262
   alt: 'Gradient flow through a differentiable contact model used to train a quadrupedal locomotion policy.'
-  excerpt: 'Learning Quadrupedal Locomotion via Differentiable Simulation<br/> [Paper](https://arxiv.org/abs/2404.02887){: .btn .btn--primary .btn--small .btn--success} [Video](https://www.youtube.com/watch?v=wmyp76Y5mPg){: .btn .btn--primary .btn--small .btn--info} **In review**'
+  excerpt: 'Learning Quadrupedal Locomotion via Differentiable Simulation<br/> [Paper](https://arxiv.org/abs/2404.02887){: .btn .btn--primary .btn--small .btn--success} [Video](https://www.youtube.com/watch?v=wmyp76Y5mPg){: .btn .btn--primary .btn--small .btn--info} **CoRL 2025**'
 
 - title: 'RAYEN'
   bibkey: tordesillas2023rayen
@@ -82,7 +82,7 @@
   image_width: 800
   image_height: 507
   alt: 'Diagram of the RAYEN layer projecting a neural network output onto a convex feasible set along a ray.'
-  excerpt: 'Imposition of Hard Convex Constraints on Neural Networks<br/> [Paper](http://arxiv.org/abs/2307.08336){: .btn .btn--primary .btn--small .btn--success} [Code](https://github.com/leggedrobotics/rayen){: .btn .btn--primary .btn--small .btn--primary}  **In review**'
+  excerpt: 'Imposition of Hard Convex Constraints on Neural Networks<br/> [Paper](http://arxiv.org/abs/2307.08336){: .btn .btn--primary .btn--small .btn--success} [Code](https://github.com/leggedrobotics/rayen){: .btn .btn--primary .btn--small .btn--primary}  **IJRR**'
 
 - title: 'Tutorial'
   topics: [optimization, planning]
