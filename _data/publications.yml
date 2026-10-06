@@ -30,6 +30,15 @@
 #  TO ADD A PAPER: copy a block to the top, fill it in, commit.
 # =============================================================================
 
+- title: 'SANDO'
+  bibkey: kondo2026sando
+  topics: [planning, optimization, aerial]
+  image_path: 'assets/images/sando.webp'
+  image_width: 800
+  image_height: 507
+  alt: 'Diagram of the MIQP assignment: trajectory segments from A to G are each assigned to a polytope in a stack of time-layered safe flight corridors.'
+  excerpt: 'Safe Autonomous Trajectory Planning for Dynamic Unknown Environments<br/> [Paper](https://arxiv.org/abs/2604.07599){: .btn .btn--primary .btn--small .btn--success} [Video](https://youtu.be/_T10DJiLQXg){: .btn .btn--primary .btn--small .btn--info} [Code](https://github.com/mit-acl/sando){: .btn .btn--primary .btn--small .btn--primary} **T-RO**'
+
 - title: 'FOCI'
   bibkey: andreu2025foci
   topics: [planning, optimization, legged]
