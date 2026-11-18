@@ -32,8 +32,8 @@ description: "The TRAIL team at Comillas-ICAI: Prof. Jesus Tordesillas, with
   * [Miguel Pajuelo Gómez](https://www.linkedin.com/in/miguel-pajuelo-gomez/){: .btn .btn--success} <span style="color:blue"> Quadrupedal locomotion.</span> Undergraduate project.
   * [Luis Fernando de Medinilla Rojas](https://www.linkedin.com/in/luis-fernando-de-medinilla-rojas-2a1bba3b8/){: .btn .btn--success} <span style="color:blue"> Quadrupedal locomotion.</span> Undergraduate project.
   * [Juan García Moraga](https://www.linkedin.com/in/juan-garcía-moraga-6b673a383/){: .btn .btn--success} <span style="color:blue"> Navigation for quadrupeds.</span> Undergraduate project.
-**Alumni**    
 
+**Alumni**    
   * [Pablo Paramio Valdés](https://www.linkedin.com/in/pabloparamio/){: .btn .btn--success} <span style="color:blue">Reinforcement Learning for drones.</span>
  Undergraduate Thesis.
    * [FU Zhengyu](https://fu-zhengyu.xyz){: .btn .btn--success} <span style="color:blue">Learning to play basketball with a transformer robot</span>. Semester project, remotely co-supervised with ETH
