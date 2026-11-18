@@ -29,7 +29,9 @@ description: "The TRAIL team at Comillas-ICAI: Prof. Jesus Tordesillas, with
   * [Sergio Jiménez Romero](https://www.linkedin.com/in/sergio-jiménez-romero/){: .btn .btn--success} <span style="color:blue">Reinforcement Learning to improve mathematical algorithms.</span> Undergraduate thesis, co-supervised with Prof. Frederike Dümbgen (CMU).
   * [Tomás Cannistra Rovati](https://www.linkedin.com/in/tomas-cannistra-rovati-28a96a2a5/){: .btn .btn--success} <span style="color:blue">Hardware setup for FPV with computer in the loop.</span> Research project.
   * [Manuel Rodríguez Villegas](https://www.linkedin.com/in/mrodriguezvillegas/){: .btn .btn--success} <span style="color:blue">Visual topological SLAM with deep learning</span>. Undergraduate Thesis, co-supervised with Prof. Jaime Boal. 
-
+  * [Miguel Pajuelo Gómez](https://www.linkedin.com/in/miguel-pajuelo-gomez/){: .btn .btn--success} <span style="color:blue"> Quadrupedal locomotion.</span> Undergraduate project.
+  * [Luis Fernando de Medinilla Rojas](https://www.linkedin.com/in/luis-fernando-de-medinilla-rojas-2a1bba3b8/){: .btn .btn--success} <span style="color:blue"> Quadrupedal locomotion.</span> Undergraduate project.
+  * [Juan García Moraga](https://www.linkedin.com/in/juan-garcía-moraga-6b673a383/){: .btn .btn--success} <span style="color:blue"> Navigation for quadrupeds.</span> Undergraduate project.
 **Alumni**    
 
   * [Pablo Paramio Valdés](https://www.linkedin.com/in/pabloparamio/){: .btn .btn--success} <span style="color:blue">Reinforcement Learning for drones.</span>
