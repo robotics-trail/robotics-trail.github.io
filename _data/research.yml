@@ -18,7 +18,8 @@
 # Markdown; rendered with `markdownify`.
 
 body: >
-  We work on **learning-based trajectory planning**: training neural networks to
+  Welcome to TRAIL! We work on **learning-based trajectory planning**: training
+  neural networks to
   produce onboard, in milliseconds, the motions a classical planner needs seconds
   to compute, and to keep doing so outside the simulator they were trained in.
   Tied closely to this is our work on **imposing hard constraints on neural

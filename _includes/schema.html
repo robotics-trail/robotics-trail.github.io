@@ -26,6 +26,7 @@
   "name": {{ site.title | jsonify }},
   "alternateName": "Trustworthy Robotics and AI Lab",
   "url": {{ '/' | absolute_url | jsonify }},
+  "logo": {{ '/assets/images/trail-logo.webp' | absolute_url | jsonify }},
   "description": {{ site.description | strip_newlines | strip | jsonify }},
   {%- if site.og_image %}
   "image": {{ site.og_image | absolute_url | jsonify }},

@@ -18,6 +18,11 @@ title: TRAIL
 # site.title. It used to say "Jesus Tordesillas Torres", which fought with the
 # hero, the repo name and the description, all of which say TRAIL. The lab is
 # the site; the person has their own page and their own Person schema.
+# Masthead logo, shown left of the title on every page. It is drawn ~44px
+# tall, so the file is 128px (sharp on retina, ~10 KB). The full-size logo is
+# assets/images/trail-logo.webp; the favicons are wired up in
+# _includes/head/custom.html.
+logo: /assets/images/trail-logo-128.webp
 repository: robotics-trail/robotics-trail.github.io
 email: jtordesillas@comillas.edu
 description: >- # this means to ignore newlines until "baseurl:"

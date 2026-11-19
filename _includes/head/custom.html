@@ -60,6 +60,14 @@
 </script>
 {%- endif -%}
 
+<!-- TRAIL: favicons, all made from the lab logo. favicon.ico (16/32/48) and
+     apple-touch-icon.png also sit at the site root because some browsers and
+     iOS ask for those paths directly without reading these tags. -->
+<link rel="icon" href="{{ '/favicon.ico' | relative_url }}" sizes="48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/images/favicon-32x32.png' | relative_url }}">
+<link rel="icon" type="image/png" sizes="192x192" href="{{ '/assets/images/favicon-192x192.png' | relative_url }}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ '/apple-touch-icon.png' | relative_url }}">
+
 <!-- TRAIL: publication topic filter (see assets/js/publication-filter.js). -->
 <script defer src="{{ '/assets/js/publication-filter.js' | relative_url }}"></script>
 
@@ -680,6 +688,53 @@
      more specific than the theme's, and only ever match once something has been
      filtered. Values copied from the compiled theme CSS so the geometry is
      unchanged. */
+  /* ---- lab logo --------------------------------------------------------- */
+
+  /* Masthead: the theme caps .site-logo img at 2rem, which leaves this round,
+     detailed logo as a smudge. A fixed px height (the theme scales the root
+     font-size at wider breakpoints) keeps it the same size everywhere. */
+  .site-logo img {
+    max-height: none;
+    height: 44px;
+    width: auto;
+    display: block;
+  }
+
+  /* Homepage hero: the logo is the <h1>. More specific than the
+     `.page__title img` rule for the /jtorde/ portrait above, so that one does
+     not resize it. The small negative margin lines the logo's visible edge up
+     with the text below it (the swooshes leave a few px of empty space). */
+  .page__title .hero-logo {
+    width: 230px;
+    height: auto;
+    max-width: 60vw;
+    display: block;
+    margin: 0 0 .1em -6px;
+  }
+
+  /* The hero's background (mader_header_white.webp, 2000x427) is sized by the
+     theme with `cover`, i.e. to the hero's height. With the plain "TRAIL" text
+     the hero was 18.8rem tall at every breakpoint; the logo makes it ~27rem, so
+     `cover` blew the trajectories up by ~40% and cut them off at the right.
+     This pins the image to the size `cover` gave it at the old height
+     (18.8rem * 2000/427 = 88rem wide, or the full width if that is larger).
+     It is anchored to the bottom of the hero so the drawing ends where the
+     text does; with the hero's bottom padding cut to 1em and no margin under
+     the lead, the gap down to the announcement box is the same 2em it was
+     before the logo. The first value in each list is the theme's transparent
+     overlay-gradient layer, left as it was. */
+  .page__hero--overlay:has(.hero-logo) {
+    background-size: cover, max(100%, 88rem) auto;
+    background-position: center, center bottom;
+    padding-bottom: 1em;
+  }
+  .page__hero--overlay:has(.hero-logo) .page__lead { margin-bottom: 0; }
+
+  @media (max-width: 37.5em) {
+    .site-logo img { height: 36px; }
+    .page__title .hero-logo { width: 170px; }
+  }
+
   @media (min-width: 37.5em) {
     .feature__wrapper .feature__item[data-col="1"] {
       clear: both;

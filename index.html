@@ -1,6 +1,6 @@
 ---
 author_profile: true
-title: "<span style='color:black; font-weight:bold;'>TRAIL</span>"
+title: "<img class='hero-logo' src='/assets/images/trail-logo.webp' alt='' width='480' height='480'><span class='visually-hidden'>TRAIL</span>"
 layout: splash
 
 permalink: /
@@ -10,7 +10,11 @@ permalink: /
 # announcing itself to every crawler as a ten-year-old article. Removing the
 # date makes og:type fall back to `website`, which is what this is.
 
-# `title` above is the visible <h1> and has to stay the styled "TRAIL" span.
+# `title` above is the visible <h1>: the TRAIL logo. The image has an empty alt
+# and the word "TRAIL" sits beside it in a visually-hidden span, so screen
+# readers announce the heading as "TRAIL" and `title | strip_html` (which feeds
+# the itemprop="headline" meta) still yields "TRAIL" rather than an empty string.
+# Sizing is in _includes/head/custom.html (.hero-logo).
 # seo_title is the <title> tag and og:title -- see the fork note at the top of
 # _includes/seo.html for why these are separate keys.
 seo_title: "TRAIL \u2014 Trustworthy Robotics and AI Lab at Comillas-ICAI"
@@ -26,7 +30,7 @@ header:
   #caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
 excerpt: "<span style='color:black; font-weight:bold; background-color: rgba(255, 255, 255, 0.75);'> Trustworthy Robotics and AI Lab </span> <br/> 
 <span style='color:black;'>Prof. Jesus Tordesillas</span> <br/> 
-<span style='color:black;'>IIT (Comillas-ICAI)</span><br/> <br/>"
+<span style='color:black;'>IIT - ICAI - Comillas</span>"
 
 
 
